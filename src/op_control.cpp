@@ -1,5 +1,6 @@
 #include "main.h"
 
+bool wingspos = false; //false is in, true is out
 
 
 void intaker() {
@@ -37,9 +38,11 @@ void catawow() {
 
 void move_the_intake() {
     while (true) {
+        //pulls the intake back, false is in
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
             moveintake.set_value(false);
         } 
+        //pushes the intake forward, true is out
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
             moveintake.set_value(true);
         }
@@ -48,12 +51,17 @@ void move_the_intake() {
 
 void move_wings() {
     while (true) {
+        //wings false state is in, true state is out
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
-            moveintake.set_value(false);
+            //if false, set true and move wings out
+            if (!wingspos) {
+                moveintake.set_value(true);
+            }
+            //if true, set false and move wings back in
+            else {
+                moveintake.set_value(false);
+            }
         } 
-        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-            moveintake.set_value(true);
-        }
     }
 }
 
