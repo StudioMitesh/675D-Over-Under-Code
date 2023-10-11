@@ -46,7 +46,16 @@ void move_the_intake() {
     }
 }
 
-
+void move_wings() {
+    while (true) {
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+            moveintake.set_value(false);
+        } 
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+            moveintake.set_value(true);
+        }
+    }
+}
 
 
 

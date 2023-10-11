@@ -6,3 +6,4 @@ extern pros::Motor intake;
 extern pros::Motor cata;
 
 extern pros::ADIDigitalOut moveintake;
+extern pros::ADIDigitalOut wings;
