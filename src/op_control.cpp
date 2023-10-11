@@ -74,4 +74,5 @@ void op_control() {
     intaker();
     catawow();
     move_the_intake();
+    move_wings();
 }
