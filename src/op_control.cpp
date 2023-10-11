@@ -56,10 +56,12 @@ void move_wings() {
             //if false, set true and move wings out
             if (!wingspos) {
                 moveintake.set_value(true);
+                wingspos = true;
             }
             //if true, set false and move wings back in
             else {
                 moveintake.set_value(false);
+                wingspos = false;
             }
         } 
     }
