@@ -10,13 +10,13 @@
 // Chassis constructor
 Drive chassis (
   // left side ports: back left 1 (backward), mid left 2, front left 3
-  {12, 13, 14}
+  {-11, -12, -13}
 
   // right side ports: back right 11 (backward), mid right 12, front right 13
-  ,{-18, -19, -20}
+  ,{18, 19, 17}
 
   // IMU Port
-  ,16
+  ,2
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
