@@ -10,7 +10,7 @@
 // Chassis constructor
 Drive chassis (
   // left side ports: back left 1 (backward), mid left 2, front left 3
-  {-11, -12, -13}
+  {-12, -13, -14}
 
   // right side ports: back right 11 (backward), mid right 12, front right 13
   ,{18, 19, 17}
