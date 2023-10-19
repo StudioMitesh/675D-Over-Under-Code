@@ -48,12 +48,147 @@ void modified_exit_condition() {
 
 
 
-//competition auton
-void comp_auton() {
-  chassis.set_drive_pid(10, DRIVE_SPEED);
+//far side comp auton offensive
+void far_side_comp_auton() {
+  //Extend intake down
+  moveintake.set_value(true);
+  //Intake green triball under bar
+  //chassis.set_drive_pid(-10, DRIVE_SPEED);
+  //chassis.wait_drive();
+  intake.move_relative(720, 600);
+  //Move forward toward match load zone, pushing red triball along w it
+  chassis.set_drive_pid(70, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Swing and extend wings
+  wings.set_value(true);
+  chassis.set_swing_pid(ez::RIGHT_SWING, -45, TURN_SPEED);
+  chassis.wait_drive();
+  //Go forward against the match load bar
+  chassis.set_drive_pid(20, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn into the goal
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+  //Go forward and push the two into the goal
+  chassis.set_drive_pid(40, DRIVE_SPEED+10);
+  chassis.wait_drive();
+  pros::delay(250);
+  //Go backwards out
+  chassis.set_drive_pid(-40, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn full 180
+  chassis.set_turn_pid(100, TURN_SPEED*0.75);
+  chassis.wait_drive();
+  pros::delay(150);
+  //Go forward into the goal and outtake the triball from intake
+  intake.move_velocity(-600);
+  pros::delay(200);
+  intake.move_velocity(0);
+  chassis.set_drive_pid(-40, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Back up after dropping it
+  chassis.set_drive_pid(40, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn to middle
+  chassis.set_turn_pid(60, TURN_SPEED);
+  chassis.wait_drive();
+  //Drive toward middle
+  chassis.set_drive_pid(-95,DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn to triball
+  chassis.set_turn_pid(0, TURN_SPEED);
+  chassis.wait_drive();
+  //Move to triball on the pipe
+  chassis.set_drive_pid(-50, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Intake the triball on the pipe
+  intake.move_velocity(600);
+  pros::delay(300);
+  intake.move_velocity(0);
+  //Back up off pipe
+  chassis.set_drive_pid(20, DRIVE_SPEED);
+  chassis.wait_drive();
+  /*
+  //Turn inwards
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.wait_drive();
+  //Move forward ish
+  chassis.set_drive_pid(-25, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn toward goal
+  chassis.set_turn_pid(180, TURN_SPEED);
+  chassis.wait_drive();
+  */
+  //Turn toward goal
+  chassis.set_turn_pid(160, TURN_SPEED*0.75);
+  chassis.wait_drive();
+  //Outtake and push toward goal and in
+  chassis.set_drive_pid(-80, DRIVE_SPEED);
+  chassis.wait_drive();
+  intake.move_velocity(-600);
+  pros::delay(500);
+  intake.move_velocity(0);
+
 }
 
 
+//far side auton win point combo auton
+void far_side_awp() {
+  //Extend intake down
+  moveintake.set_value(true);
+  //Intake green triball under bar
+  //chassis.set_drive_pid(-10, DRIVE_SPEED);
+  //chassis.wait_drive();
+  intake.move_relative(720, 600);
+  //Move forward toward match load zone, pushing red triball along w it
+  chassis.set_drive_pid(70, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Swing and extend wings
+  wings.set_value(true);
+  chassis.set_swing_pid(ez::RIGHT_SWING, -45, TURN_SPEED);
+  chassis.wait_drive();
+  //Go forward against the match load bar
+  chassis.set_drive_pid(20, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn into the goal
+  chassis.set_turn_pid(-90, TURN_SPEED);
+  chassis.wait_drive();
+  //Go forward and push the two into the goal
+  chassis.set_drive_pid(40, DRIVE_SPEED+10);
+  chassis.wait_drive();
+  pros::delay(250);
+  //Go backwards out
+  chassis.set_drive_pid(-40, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn full 180
+  chassis.set_turn_pid(100, TURN_SPEED*0.75);
+  chassis.wait_drive();
+  pros::delay(150);
+  //Go forward into the goal and outtake the triball from intake
+  intake.move_velocity(-600);
+  pros::delay(200);
+  intake.move_velocity(0);
+  chassis.set_drive_pid(-40, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Back up after dropping it
+  chassis.set_drive_pid(40, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Retract wings
+  wings.set_value(false);
+  //Turn to bar
+  chassis.set_turn_pid(-10, TURN_SPEED);
+  chassis.wait_drive();
+  //Drive toward bar
+  chassis.set_drive_pid(-95,DRIVE_SPEED);
+  chassis.wait_drive();
+  //Raise intake
+  moveintake.set_value(false);
+  //Touch elevation bar slightly
+  chassis.set_turn_pid(0, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-15, DRIVE_SPEED*0.5);
+  chassis.wait_drive();
+}
 
 
 

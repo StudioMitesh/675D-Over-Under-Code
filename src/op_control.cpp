@@ -9,16 +9,16 @@ bool shouldLoad = true;
 
 
 void intaker() {
-    //intake
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1) == 1) {
-        intake.move_velocity(400);
+    //outtake
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        intake.move_velocity(-400);
     }
     //ramp up intake speed
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) == 1) {
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
         intake.move_velocity(400);
     }
-    //outtake
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2) == 1) {
+    //intake
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
         intake.move_velocity(400);
     }
     else {
@@ -26,16 +26,14 @@ void intaker() {
     }
 }
 
-/*
-void catawow(void* param) {
-        if (limitSwitch.get_value() == 1) {
-              if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) == 1)
-              {
+void catawow() {
+        if (limitSwitch.get_value() == true) {
+            if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
                 cata.move_relative(55, 600);
-              }
-              else
-              {
+            }
+            else {
                 cata.move_velocity(0);
+            }
         }
         else {
             cata.move_velocity(50);
@@ -45,7 +43,6 @@ void catawow(void* param) {
         pros::delay(20); 
 }
 
-*/
 
 void updateCatapult() {
     if(kickerRotation.get_angle() > targetAngle) {

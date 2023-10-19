@@ -16,7 +16,7 @@ Drive chassis (
   ,{18, 19, 17}
 
   // IMU Port
-  ,12
+  ,16
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
@@ -60,13 +60,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Example Drive\n\nDrive forward and come back.", drive_example),
-    Auton("Example Turn\n\nTurn 3 times.", turn_example),
-    Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
-    Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
-    Auton("Swing Example\n\nSwing, drive, swing.", swing_example),
-    Auton("Combine all 3 movements", combining_movements),
-    Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
+    Auton("Comp Auton Far Side", far_side_comp_auton),
+    Auton("Far Side AWP", far_side_awp),
   });
 
   // Initialize chassis and auton selector
@@ -151,6 +146,7 @@ void opcontrol() {
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
 
     intaker();
+    catawow();
     move_the_intake();
     move_wings();
     pros::Task monitorButtonTask(monitorButtonAndFire);
