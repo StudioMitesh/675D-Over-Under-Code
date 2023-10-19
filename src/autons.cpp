@@ -53,8 +53,9 @@ void far_side_comp_auton() {
   //Extend intake down
   moveintake.set_value(true);
   //Intake green triball under bar
-  //chassis.set_drive_pid(-10, DRIVE_SPEED);
-  //chassis.wait_drive();
+  pros::delay(100);
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
+  chassis.wait_drive();
   intake.move_relative(720, 600);
   //Move forward toward match load zone, pushing red triball along w it
   chassis.set_drive_pid(70, DRIVE_SPEED);
@@ -70,7 +71,7 @@ void far_side_comp_auton() {
   chassis.set_turn_pid(-90, TURN_SPEED);
   chassis.wait_drive();
   //Go forward and push the two into the goal
-  chassis.set_drive_pid(40, DRIVE_SPEED+10);
+  chassis.set_drive_pid(60, DRIVE_SPEED+10);
   chassis.wait_drive();
   pros::delay(250);
   //Go backwards out
