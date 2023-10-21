@@ -10,17 +10,17 @@
 // Chassis constructor
 Drive chassis (
   // left side ports: back left 1 (backward), mid left 2, front left 3
-  {-11, -12, -13}
+  {-20,-19,-18}
 
   // right side ports: back right 11 (backward), mid right 12, front right 13
-  ,{18, 19, 17}
+  ,{12,13,14}
 
   // IMU Port
   ,16
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
-  ,3.5
+  ,3.25
 
   // Cartridge RPM
   //   (or tick per rotation if using tracking wheels)
@@ -60,9 +60,10 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Comp Auton Far Side", far_side_comp_auton),
-    Auton("Far Side AWP", far_side_awp),
-    Auton("Near Side Auton", near_side),
+    //Auton("Comp Auton Far Side", far_side_comp_auton),
+    //Auton("Far Side AWP", far_side_awp),
+    //Auton("Near Side Auton", near_side),
+    Auton("Far Side Bar + 1 Tri", far_side_bar),
     Auton("Skills Auton", skills_auton),
   });
 
