@@ -1,4 +1,5 @@
 #include "main.h"
+#include <random>
 
 
 /////
@@ -200,22 +201,50 @@ void near_side() {
   //
 }
 
+
 void far_side_bar() {
   //Push straight into the close goal (match load tribals)
   chassis.set_drive_pid(-90, 127, true, true);
   chassis.wait_drive();
-  chassis.set_drive_pid(-20,127);
+  chassis.set_drive_pid(20, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-40,127);
   chassis.wait_drive();
   //Move backward out
-  chassis.set_drive_pid(60, DRIVE_SPEED);
+  chassis.set_drive_pid(85, DRIVE_SPEED);
   chassis.wait_drive();
-  //Turn to elev bar
-  chassis.set_turn_pid(140, TURN_SPEED);
+  //Turn to elev bar and go to it
+  chassis.set_turn_pid(-120+180, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(40, DRIVE_SPEED*0.8);
+  chassis.set_drive_pid(100, DRIVE_SPEED*0.8, true, true);
+  chassis.wait_drive();
+  chassis.set_turn_pid(75, TURN_SPEED*0.25);
+  chassis.wait_drive();
+  chassis.set_drive_pid(5, DRIVE_SPEED*0.5);
   chassis.wait_drive();
 }
 
+
+void near_side_bar() {
+  chassis.set_drive_pid(90, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-20, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(40,127);
+  chassis.wait_drive();
+  //Move backward out
+  chassis.set_drive_pid(-85, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn to elev bar and go to it
+  chassis.set_turn_pid(-120+180, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-100, DRIVE_SPEED*0.8, true, true);
+  chassis.wait_drive();
+  chassis.set_turn_pid(75, TURN_SPEED*0.25);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-5, DRIVE_SPEED*0.5);
+  chassis.wait_drive();
+}
 
 //skills auton: spam tribals
 void skills_auton() {
@@ -234,7 +263,7 @@ void skills_auton() {
   chassis.wait_drive();
   //Spam
   cata.move_voltage(10000);
-  pros::delay(30000);
+  pros::delay(45000);
   cata.move_voltage(0);
   //Turn to go under bar
   chassis.set_turn_pid(150, TURN_SPEED);
