@@ -224,6 +224,20 @@ void far_side_bar() {
   chassis.wait_drive();
 }
 
+void near_side_tri() {
+  //Drop one into the goal
+  chassis.set_drive_pid(90, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-20, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(40,127);
+  chassis.wait_drive();
+  //Positioning for start
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(120, TURN_SPEED);
+}
+
 
 void near_side_bar() {
   chassis.set_drive_pid(90, 127, true, true);
@@ -249,29 +263,64 @@ void near_side_bar() {
 //skills auton: spam tribals
 void skills_auton() {
   //Push straight into the close goal (2 tribals)
+  wings.set_value(true);
   chassis.set_drive_pid(-90, 127, true, true);
   chassis.wait_drive();
-  chassis.set_drive_pid(-20,127);
+  wings.set_value(false);
+  chassis.set_drive_pid(20, DRIVE_SPEED);
   chassis.wait_drive();
+  chassis.set_drive_pid(-40,127);
+  chassis.wait_drive();
+  moveintake.set_value(true);
   //Move backward out
-  chassis.set_drive_pid(30, DRIVE_SPEED);
+  chassis.set_drive_pid(60, DRIVE_SPEED);
   chassis.wait_drive();
   //Turn to goal
-  chassis.set_turn_pid(120-180, TURN_SPEED);
+  chassis.set_turn_pid(115, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(10, DRIVE_SPEED);
+  chassis.set_drive_pid(35, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(112.5,TURN_SPEED);
   chassis.wait_drive();
   //Spam
-  cata.move_voltage(10000);
-  pros::delay(45000);
+  cata.move_voltage(8000);
+  pros::delay(37000);
   cata.move_voltage(0);
   //Turn to go under bar
   chassis.set_turn_pid(150, TURN_SPEED);
   chassis.wait_drive();
-  /*
   //Go under neath the bar
   chassis.set_drive_pid(-150, DRIVE_SPEED, true, true);
   chassis.wait_drive();
+  /// the one where it goes to the side
+  //Open wings and swing to push
+  wings.set_value(true);
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(120, TURN_SPEED);
+  chassis.wait_drive();
+  //RAM into goal
+  chassis.set_drive_pid(-60, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(40, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-60, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(40, 127, true, true);
+  chassis.wait_drive();
+  //Turn back to go to bar for elev
+  wings.set_value(false);
+  chassis.set_drive_pid(50, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_turn_pid(120, TURN_SPEED);
+  chassis.wait_drive();
+  //Hang time for bar
+  chassis.set_drive_pid(140, 120, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(20, 127);
+  chassis.wait_drive();
+  /*
+  /// the one where it goes to the middle
   //Turn away from the thing
   chassis.set_turn_pid(-20, TURN_SPEED);
   chassis.wait_drive();
@@ -290,6 +339,11 @@ void skills_auton() {
   chassis.set_drive_pid(-60, 127, true, true);
   chassis.wait_drive();
   chassis.set_drive_pid(40, 127, true, true);
+  chassis.wait_drive();
+  //Go to bar for elev
+  chassis.set_turn_pid(180, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(32, DRIVE_SPEED);
   chassis.wait_drive();
   */
 }

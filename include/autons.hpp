@@ -8,6 +8,8 @@ void far_side_comp_auton();
 void far_side_awp();
 void near_side();
 void far_side_bar();
+void near_side_tri();
+void near_side_bar();
 void skills_auton();
 
 
