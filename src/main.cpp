@@ -62,6 +62,8 @@ void initialize() {
   ez::as::auton_selector.add_autons({
     Auton("Comp Auton Far Side", far_side_comp_auton),
     Auton("Far Side AWP", far_side_awp),
+    Auton("Near Side Auton", near_side),
+    Auton("Skills Auton", skills_auton),
   });
 
   // Initialize chassis and auton selector
@@ -146,7 +148,7 @@ void opcontrol() {
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
 
     intaker();
-    catawow();
+    //catawow();
     move_the_intake();
     move_wings();
     pros::Task monitorButtonTask(monitorButtonAndFire);

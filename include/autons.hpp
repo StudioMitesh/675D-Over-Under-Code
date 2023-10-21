@@ -6,6 +6,8 @@ extern Drive chassis;
 
 void far_side_comp_auton();
 void far_side_awp();
+void near_side();
+void skills_auton();
 
 
 

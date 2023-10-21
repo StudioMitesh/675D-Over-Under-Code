@@ -58,10 +58,10 @@ void far_side_comp_auton() {
   chassis.wait_drive();
   intake.move_relative(720, 600);
   //Move forward toward match load zone, pushing red triball along w it
-  chassis.set_drive_pid(70, DRIVE_SPEED);
+  chassis.set_drive_pid(90, DRIVE_SPEED);
   chassis.wait_drive();
   //Swing and extend wings
-  wings.set_value(true);
+  //wings.set_value(true);
   chassis.set_swing_pid(ez::RIGHT_SWING, -45, TURN_SPEED);
   chassis.wait_drive();
   //Go forward against the match load bar
@@ -192,10 +192,55 @@ void far_side_awp() {
 }
 
 
+// near side auton
+void near_side() {
+  //Extend intake down
+  moveintake.set_value(true);
+  //
+}
 
 
-
-
+//skills auton: spam tribals
+void skills_auton() {
+  //Push straight into the close goal (2 tribals)
+  chassis.set_drive_pid(90, 127, true, true);
+  chassis.wait_drive();
+  //Move backward out
+  chassis.set_drive_pid(-30, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn to goal
+  chassis.set_turn_pid(120, TURN_SPEED);
+  chassis.wait_drive();
+  //Spam
+  cata.move_voltage(10000);
+  pros::delay(30000);
+  cata.move_voltage(0);
+  //Turn to go under bar
+  chassis.set_turn_pid(150, TURN_SPEED);
+  chassis.wait_drive();
+  //Go under neath the bar
+  chassis.set_drive_pid(150, DRIVE_SPEED, true, true);
+  chassis.wait_drive();
+  //Turn away from the thing
+  chassis.set_turn_pid(-20, TURN_SPEED);
+  chassis.wait_drive();
+  //Drive toward the tribals
+  chassis.set_drive_pid(100, DRIVE_SPEED, true, true);
+  chassis.wait_drive();
+  //Turn toward goal
+  chassis.set_turn_pid(150, TURN_SPEED);
+  chassis.wait_drive();
+  //RAM into
+  wings.set_value(true);
+  chassis.set_drive_pid(60, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-40, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(60, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-40, 127, true, true);
+  chassis.wait_drive();
+}
 
 
 
