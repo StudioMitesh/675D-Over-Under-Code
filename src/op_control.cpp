@@ -5,7 +5,7 @@ bool isMoving = true;
 bool kickerToggle = true;
 const double targetAngle = 19870;
 const double targAngle2 = 22525;
-const int spinVoltage = 9500;
+const int spinVoltage = 7500;
 bool shouldLoad = true;
 bool allthewaydown = true;
 
