@@ -62,7 +62,8 @@ void initialize() {
   ez::as::auton_selector.add_autons({
     //Auton("Comp Auton Far Side", far_side_comp_auton),
     //Auton("Far Side AWP", far_side_awp),
-    //Auton("Near Side Auton", near_side),
+    //Auton("Near Side Auton", near_side_tri),
+    //Auton("Far Side 2 Tri", farsideish),
     Auton("Far Side Bar + 1 Tri", far_side_bar),
     Auton("Skills Auton", skills_auton),
   });

@@ -52,7 +52,7 @@ void modified_exit_condition() {
 //far side comp auton offensive
 void far_side_comp_auton() {
   //Extend intake down
-  moveintake.set_value(true);
+  //moveintake.set_value(true);
   //Intake green triball under bar
   chassis.set_drive_pid(-10, DRIVE_SPEED);
   chassis.wait_drive();
@@ -63,7 +63,7 @@ void far_side_comp_auton() {
   chassis.set_drive_pid(-180, DRIVE_SPEED*0.75, true, true);
   chassis.wait_drive();
   //Swing and extend wings
-  //wings.set_value(true);
+  wings.set_value(true);
   chassis.set_swing_pid(ez::RIGHT_SWING, -45, TURN_SPEED);
   chassis.wait_drive();
   //Go forward against the match load bar
@@ -79,6 +79,7 @@ void far_side_comp_auton() {
   //Go backwards out
   chassis.set_drive_pid(40, DRIVE_SPEED);
   chassis.wait_drive();
+  wings.set_value(false);
   //Turn full 180
   chassis.set_turn_pid(100, TURN_SPEED*0.75);
   chassis.wait_drive();
@@ -201,6 +202,38 @@ void near_side() {
   //
 }
 
+void farsideish() {
+  //Push straight into the close goal (match load tribals)
+  chassis.set_drive_pid(-90, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(20, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-40,127);
+  chassis.wait_drive();
+  //Move backward out
+  chassis.set_drive_pid(35, DRIVE_SPEED);
+  chassis.wait_drive();
+  //Turn to elev bar and go to it
+  chassis.set_turn_pid(-120+210, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(95, DRIVE_SPEED*0.8, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(15, DRIVE_SPEED*0.75);
+  chassis.wait_drive();
+  //Intake the one on the bar
+  intake.move_relative(720, 600);
+  //Turn around
+  chassis.set_turn_pid(-120, TURN_SPEED*0.75);
+  chassis.wait_drive();
+  //Push into the goal
+  chassis.set_drive_pid(120, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-20, 127);
+  chassis.wait_drive();
+  chassis.set_drive_pid(40, 127);
+  chassis.wait_drive();
+}
+
 
 void far_side_bar() {
   //Push straight into the close goal (match load tribals)
@@ -214,6 +247,7 @@ void far_side_bar() {
   chassis.set_drive_pid(85, DRIVE_SPEED);
   chassis.wait_drive();
   //Turn to elev bar and go to it
+  /*
   chassis.set_turn_pid(-120+180, TURN_SPEED);
   chassis.wait_drive();
   chassis.set_drive_pid(100, DRIVE_SPEED*0.8, true, true);
@@ -222,6 +256,7 @@ void far_side_bar() {
   chassis.wait_drive();
   chassis.set_drive_pid(5, DRIVE_SPEED*0.5);
   chassis.wait_drive();
+  */
 }
 
 void near_side_tri() {
