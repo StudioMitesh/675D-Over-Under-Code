@@ -11,7 +11,12 @@ void farsideish();
 void far_side_bar();
 void near_side_tri();
 void near_side_bar();
+void real_skills();
 void skills_auton();
+void offensive_middle();
+void defensive_alli_bar();
+void krishsOptimizedTriballAuton();
+void krishsBasicAuton();
 
 
 

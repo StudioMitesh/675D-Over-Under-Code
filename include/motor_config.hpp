@@ -3,10 +3,11 @@
 #include "pros/motors.h"
 
 extern pros::Motor intake;
-extern pros::Motor cata;
+extern pros::Motor slap;
 
 extern pros::ADIDigitalOut moveintake;
 extern pros::ADIDigitalOut wings;
+extern pros::ADIDigitalOut elev;
 
 extern pros::ADIDigitalIn limitSwitch;
 

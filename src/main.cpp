@@ -10,13 +10,13 @@
 // Chassis constructor
 Drive chassis (
   // left side ports: back left 1 (backward), mid left 2, front left 3
-  {-20,-19,-18}
+  {-20,-9,-10}
 
   // right side ports: back right 11 (backward), mid right 12, front right 13
-  ,{12,13,14}
+  ,{4,5,11}
 
   // IMU Port
-  ,16
+  ,2
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
@@ -63,8 +63,10 @@ void initialize() {
     //Auton("Comp Auton Far Side", far_side_comp_auton),
     //Auton("Far Side AWP", far_side_awp),
     //Auton("Near Side Auton", near_side_tri),
-    //Auton("Far Side 2 Tri", farsideish),
-    Auton("Far Side Bar + 1 Tri", far_side_bar),
+    Auton("Far Side 2 Tri", farsideish),
+    //Auton("Middle Offensive", offensive_middle),
+    //Auton("Defensive Alliance + Bar + Steal", defensive_alli_bar),
+    //Auton("Far Side Bar + 1 Tri", far_side_bar),
     Auton("Skills Auton", skills_auton),
   });
 
@@ -139,7 +141,7 @@ void autonomous() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD);
-  cata.set_brake_mode(MOTOR_BRAKE_HOLD);
+  slap.set_brake_mode(MOTOR_BRAKE_HOLD);
 
   while (true) {
 
@@ -151,10 +153,11 @@ void opcontrol() {
 
     intaker();
     //catawow();
-    move_the_intake();
+    //move_the_intake();
     move_wings();
+    move_elevation();
     pros::Task monitorButtonTask(monitorButtonAndFire);
-    updateCatapult();
+    updateslapper();
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
