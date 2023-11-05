@@ -226,7 +226,7 @@ void far_side_comp_auton()
   chassis.set_turn_pid(80, DRIVE_SPEED*1.5);
 
   chassis.set_drive_pid(25, DRIVE_SPEED);
-  slap. // do the fxcking thing with caputal. idk how to do dis shit cause Joseph changed it all
+  cata. // do the fxcking thing with caputal. idk how to do dis shit cause Joseph changed it all
   */
 
 
@@ -304,6 +304,9 @@ void near_side()
   //
 }
 
+
+
+/// ACTUAL FAR SIDE OFFENSIVE AUTON FOR USE
 void farsideish()
 {
   // Push straight into the close goal (match load tribals)
@@ -317,31 +320,38 @@ void farsideish()
   chassis.set_drive_pid(45, DRIVE_SPEED);
   chassis.wait_drive();
   // Turn to elev bar and go to it
-  chassis.set_turn_pid(-120 + 210, TURN_SPEED);
+  chassis.set_turn_pid(-120 + 217, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(95, DRIVE_SPEED * 0.8, true, true);
+  chassis.set_drive_pid(120, DRIVE_SPEED * 0.9, true, true);
   chassis.wait_drive();
-  chassis.set_drive_pid(25, DRIVE_SPEED * 0.75);
-  chassis.wait_drive();
-  pros::delay(500);
+  pros::delay(100);
   // Intake the one on the bar
   intake.move_relative(1080, 600);
-  pros::delay(500);
+  pros::delay(100);
   // Turn around
-  chassis.set_turn_pid(-135, TURN_SPEED * 0.75);
+  chassis.set_turn_pid(-150, TURN_SPEED * 0.75);
   chassis.wait_drive();
-  pros::delay(150);
+  pros::delay(100);
   // Outtake slightly
   intake.move_velocity(-600);
-  pros::delay(300);
+  pros::delay(100);
   intake.move_velocity(0);
   // Push into the goal
-  chassis.set_drive_pid(110, DRIVE_SPEED);
+  chassis.set_drive_pid(80, DRIVE_SPEED);
   chassis.wait_drive();
+  chassis.set_turn_pid(-110, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(30, DRIVE_SPEED_FASTER);
+  chassis.wait_drive();
+  /*
   chassis.set_drive_pid(-20, 127);
   chassis.wait_drive();
   chassis.set_drive_pid(40, 127);
   chassis.wait_drive();
+  */
+  // Drop back to grab third
+
+  /*
   // Back up to elevation bar
   chassis.set_drive_pid(-120, DRIVE_SPEED);
   chassis.wait_drive();
@@ -353,6 +363,7 @@ void farsideish()
   // Back up into bar
   chassis.set_drive_pid(-50, DRIVE_SPEED);
   chassis.wait_drive();
+  */
 }
 
 void far_side_bar() {
@@ -425,7 +436,7 @@ void krishsBasicAuton() {
   chassis.wait_drive();
   chassis.set_drive_pid(15, DRIVE_SPEED_FASTEST, true, true);
   chassis.wait_drive();
-  //slap.move_voltage(7500); // I honestly have no fxcking clue if this is how the slap part works because after Joseph changed this part, I lowkey kinda got lost.
+  //cata.move_voltage(7500); // I honestly have no fxcking clue if this is how the cata part works because after Joseph changed this part, I lowkey kinda got lost.
   //pros::delay(250);
   chassis.set_drive_pid(5, DRIVE_SPEED, true, true);
 }
@@ -455,6 +466,28 @@ void offensive_middle() {
   chassis.set_drive_pid(-75, DRIVE_SPEED_FASTEST);
   chassis.wait_drive();
   
+}
+
+
+void defensive_push() {
+  chassis.set_drive_pid(90, 127, true, true);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-20, DRIVE_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(40, 127);
+  chassis.wait_drive();
+  // Move backward out
+  chassis.set_drive_pid(-85, DRIVE_SPEED);
+  chassis.wait_drive();
+  // Turn to elev bar and go to it
+  chassis.set_turn_pid(-120 + 180, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-100, DRIVE_SPEED * 0.8, true, true);
+  chassis.wait_drive();
+  chassis.set_turn_pid(75, TURN_SPEED * 0.25);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-5, DRIVE_SPEED * 0.5);
+  chassis.wait_drive();
 }
 
 
@@ -621,7 +654,7 @@ void krishsOptimizedTriballAuton() {
   chassis.wait_drive();
   chassis.set_turn_pid(70, TURN_SPEED_FASTEST);
   chassis.set_drive_pid(-4, DRIVE_SPEED_FASTEST, true);
-  slap.move_voltage(7500);
+  cata.move_voltage(7500);
 
 
 
@@ -701,7 +734,7 @@ void krishsOptimizedTriballAuton() {
   chassis.set_drive_pid(-8, DRIVE_SPEED);
   chassis.wait_drive();
   // Raise catapult so that it touches elevation bars
-  slap.move_voltage(7500); // I honestly have no fxcking clue if this is how the slap part works because after Joseph changed this part, I lowkey kinda got lost.
+  cata.move_voltage(7500); // I honestly have no fxcking clue if this is how the cata part works because after Joseph changed this part, I lowkey kinda got lost.
 
 
 
@@ -759,31 +792,38 @@ void skills_auton()
   chassis.wait_drive();
   //moveintake.set_value(true);
   // Move backward out
-  chassis.set_drive_pid(60, DRIVE_SPEED);
+  chassis.set_drive_pid(67, DRIVE_SPEED);
   chassis.wait_drive();
   // Turn to goal
-  chassis.set_turn_pid(115, TURN_SPEED);
+  chassis.set_turn_pid(115-180, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(35, DRIVE_SPEED);
+  wings.set_value(true);
+  pros::delay(750);
+  wings.set_value(false);
+  chassis.set_drive_pid(-55, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(112.5, TURN_SPEED);
+  chassis.set_turn_pid(112.5-180, TURN_SPEED);
   chassis.wait_drive();
   // Spam
-  slap.move_voltage(8000);
-  pros::delay(37000);
-  slap.move_voltage(0);
+  cata.move_voltage(8500);
+  pros::delay(42500);
+  cata.move_voltage(0);
   // Turn to go under bar
-  chassis.set_turn_pid(150, TURN_SPEED);
+  chassis.set_turn_pid(125, TURN_SPEED);
   chassis.wait_drive();
   // Go under neath the bar
-  chassis.set_drive_pid(-150, DRIVE_SPEED, true, true);
+  chassis.set_drive_pid(-100, DRIVE_SPEED, true, true);
   chassis.wait_drive();
   /// the one where it goes to the side
+  chassis.set_turn_pid(110, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-155, DRIVE_SPEED);
+  chassis.wait_drive();
   // Open wings and swing to push
   wings.set_value(true);
   chassis.set_drive_pid(-30, DRIVE_SPEED);
   chassis.wait_drive();
-  chassis.set_turn_pid(120, TURN_SPEED);
+  chassis.set_turn_pid(40, TURN_SPEED);
   chassis.wait_drive();
   // RAM into goal
   chassis.set_drive_pid(-60, 127, true, true);

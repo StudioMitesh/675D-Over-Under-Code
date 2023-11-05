@@ -11,5 +11,5 @@ void op_control();
 
 void monitorButtonAndFire();
 void fireandReload(int spinDurationMs);
-void updateslapper();
+void updateCatapult();
 void move_elevation();

@@ -5,7 +5,7 @@ bool isMoving = true;
 bool kickerToggle = true;
 const double targetAngle = 19870;
 const double targAngle2 = 22525;
-const int spinVoltage = 7500;
+const int spinVoltage = 10000;
 bool shouldLoad = true;
 bool allthewaydown = true;
 
@@ -29,17 +29,17 @@ void intaker() {
 }
 
 /*
-void slapwow() {
+void catawow() {
         if (limitSwitch.get_value() == true) {
             if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-                slap.move_relative(55, 600);
+                cata.move_relative(55, 600);
             }
             else {
-                slap.move_velocity(0);
+                cata.move_velocity(0);
             }
         }
         else {
-            slap.move_velocity(50);
+            cata.move_velocity(50);
         }
 
 
@@ -48,36 +48,36 @@ void slapwow() {
 */
 
 
-void updateslapper() {
+void updateCatapult() {
     while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-        slap.move_velocity(spinVoltage);
-        allthewaydown = !allthewaydown;
+            cata.move_velocity(spinVoltage);
+            allthewaydown = !allthewaydown;
     }
-    slap.move_velocity(0);
+    cata.move_velocity(0);
     allthewaydown = !allthewaydown;
-
-
-    // put slap all the way down so we can intake into it
+        
+    
+    // put cata all the way down so we can intake into it
     /* if (allthewaydown) {
         if(kickerRotation.get_angle() < targetAngle && kickerRotation.get_angle() > targetAngle-5) {
-            slap.move_voltage(0);
+            cata.move_voltage(0);
             pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
             pros::lcd::print(0, "Stopped loading"); // Debugging
         }    
         else {
-            slap.move_voltage(spinVoltage);
+            cata.move_voltage(spinVoltage);
             pros::lcd::print(0, "Loading..."); // Debugging
         }
     }
-    // haflway point down the slap, stops intaking and holds position
+    // haflway point down the cata, stops intaking and holds position
     else {
         if(kickerRotation.get_angle() < targAngle2 && kickerRotation.get_angle() > targAngle2-5) {
-            slap.move_voltage(0);
+            cata.move_voltage(0);
             pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
             pros::lcd::print(0, "Stopped loading"); // Debugging
         }    
         else {
-            slap.move_voltage(spinVoltage);
+            cata.move_voltage(spinVoltage);
             pros::lcd::print(0, "Loading..."); // Debugging
             
         }
@@ -86,48 +86,48 @@ void updateslapper() {
     
     if (allthewaydown) {
         if(kickerRotation.get_angle() > targetAngle || kickerRotation.get_angle() < targetAngle-15) {
-            slap.move_voltage(spinVoltage);
+            cata.move_voltage(spinVoltage);
             pros::lcd::print(0, "Loading..."); // Debugging
         }    
         else {
-            slap.move_voltage(0);
+            cata.move_voltage(0);
             pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
             pros::lcd::print(0, "Stopped loading"); // Debugging
         }
     }
-    // haflway point down the slap, stops intaking and holds position
+    // haflway point down the cata, stops intaking and holds position
     else {
         if(kickerRotation.get_angle() > targAngle2 || kickerRotation.get_angle() < targAngle2-15) {
-            slap.move_voltage(spinVoltage);
+            cata.move_voltage(spinVoltage);
             pros::lcd::print(0, "Loading..."); // Debugging
         }    
         else {
-            slap.move_voltage(0);
+            cata.move_voltage(0);
             pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
             pros::lcd::print(0, "Stopped loading"); // Debugging
         }
     }
     */
-    /*
+   /*
     if (allthewaydown) {
         if(kickerRotation.get_angle() > targetAngle) {
-            slap.move_voltage(spinVoltage);
+            cata.move_voltage(spinVoltage);
             pros::lcd::print(0, "Loading..."); // Debugging
         }    
         else {
-            slap.move_voltage(0);
+            cata.move_voltage(0);
             pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
             pros::lcd::print(0, "Stopped loading"); // Debugging
         }
     }
-    // haflway point down the slap, stops intaking and holds position
+    // haflway point down the cata, stops intaking and holds position
     else {
         if(kickerRotation.get_angle() > targAngle2) {
-            slap.move_voltage(spinVoltage);
+            cata.move_voltage(spinVoltage);
             pros::lcd::print(0, "Loading..."); // Debugging
         }    
         else {
-            slap.move_voltage(0);
+            cata.move_voltage(0);
             pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
             pros::lcd::print(0, "Stopped loading"); // Debugging
         }
@@ -138,8 +138,8 @@ void updateslapper() {
 
 
 void fireAndReload() {
-    // Spin the slapper for the defined duration to fire
-    slap.move_relative(80, 600);
+    // Spin the catapult for the defined duration to fire
+    cata.move_relative(80, 600);
     pros::lcd::print(1, "Firing!"); // Debugging
 
     pros::delay(300);
@@ -155,11 +155,11 @@ void fireAndReload() {
 void monitorButtonAndFire() {
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         allthewaydown = true;
-        slap.move_velocity(600);
+        cata.move_velocity(600);
     }
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         allthewaydown = false;
-        slap.move_velocity(600);
+        cata.move_velocity(600);
     }
 }
 
@@ -179,14 +179,14 @@ void move_the_intake() {
 
 void move_wings() {
         //wings false state is in, true state is out
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
             //if false, set true and move wings out
                 wings.set_value(true);
                 wingspos = true;
             //if true, set false and move wings back in
 
         } 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
             //if false, set true and move wings out
                 wings.set_value(false);
                 wingspos = false;
@@ -199,7 +199,10 @@ void move_elevation() {
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
         elev.set_value(true);
     }
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
         elev.set_value(false);
     }
 }
+
+

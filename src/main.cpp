@@ -62,7 +62,7 @@ void initialize() {
   ez::as::auton_selector.add_autons({
     //Auton("Comp Auton Far Side", far_side_comp_auton),
     //Auton("Far Side AWP", far_side_awp),
-    //Auton("Near Side Auton", near_side_tri),
+    Auton("Defensive Tri + Push", defensive_push),
     Auton("Far Side 2 Tri", farsideish),
     //Auton("Middle Offensive", offensive_middle),
     //Auton("Defensive Alliance + Bar + Steal", defensive_alli_bar),
@@ -141,7 +141,7 @@ void autonomous() {
 void opcontrol() {
   // This is preference to what you like to drive on.
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD);
-  slap.set_brake_mode(MOTOR_BRAKE_HOLD);
+  cata.set_brake_mode(MOTOR_BRAKE_HOLD);
 
   while (true) {
 
@@ -157,7 +157,7 @@ void opcontrol() {
     move_wings();
     move_elevation();
     pros::Task monitorButtonTask(monitorButtonAndFire);
-    updateslapper();
+    updateCatapult();
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
   }
