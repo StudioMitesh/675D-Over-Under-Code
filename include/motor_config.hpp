@@ -2,6 +2,17 @@
 #include "pros/adi.hpp"
 #include "pros/motors.h"
 
+extern pros::Motor leftFront;
+extern pros::Motor leftMid;
+extern pros::Motor leftBack;
+
+extern pros::Motor rightFront;
+extern pros::Motor rightMid;
+extern pros::Motor rightBack;
+
+extern pros::Motor_Group leftMotors;
+extern pros::Motor_Group rightMotors;
+
 extern pros::Motor intake;
 extern pros::Motor cata;
 

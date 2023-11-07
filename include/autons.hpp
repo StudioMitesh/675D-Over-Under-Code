@@ -1,8 +1,8 @@
 #pragma once
 
-#include "EZ-Template/drive/drive.hpp"
+//#include "EZ-Template/drive/drive.hpp"
 
-extern Drive chassis;
+//extern Drive chassis;
 
 void far_side_comp_auton();
 void far_side_awp();
