@@ -119,7 +119,7 @@ void opcontrol() {
 	Task autoFire(autoKick);
 	Task wingsTask(actWings);
 	Task cataTask(catapult);
-	Task elevTask(elevation);
+	Task elevTask(move_elevation);
 
 	
 	
