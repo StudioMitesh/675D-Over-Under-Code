@@ -28,9 +28,12 @@ void intaker() {
 }
 
 void catapult() {
+    // while (R1) catapult runs
     while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
             cata.move_velocity(spinVoltage);
     }
+
+    // if not, then catapult does not
     cata.move_velocity(0);
 }
 
