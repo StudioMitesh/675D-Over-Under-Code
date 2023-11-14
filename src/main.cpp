@@ -118,7 +118,7 @@ void opcontrol() {
 	Task kickerTask(kickerKicks);
 	Task autoFire(autoKick);
 	Task wingsTask(actWings);
-	//Task cataTask(catapult);
+	Task cataTask(catapult);
 
 	
 	
