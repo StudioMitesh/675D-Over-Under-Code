@@ -1,3 +1,27 @@
+/* LEM LIB AUTON:
+
+#include "main.h"
+
+// use chassis. {setPose(), turnTo(), moveTo()}
+void offense() {
+  chassis.setPose(50, 55, -45);
+  delay(250);
+  chassis.turnTo(10, 60, 1000, true);
+  chassis.moveTo(10, 60, 1000);
+  chassis.turnTo(-12, 36, 1000);
+}
+
+void defense() {
+  
+}
+
+
+
+
+
+*/
+
+
 #include "main.h"
 #include <random>
 
