@@ -117,8 +117,10 @@ void opcontrol() {
 	Task driveTask(arcade_flipped);
 	Task kickerTask(kickerKicks);
 	Task autoFire(autoKick);
-	Task wingsTask(actWings);
+
+	Task intakeTast(intake);
 	Task cataTask(catapult);
+	Task wingsTask(actWings);
 	Task elevTask(move_elevation);
 
 	
