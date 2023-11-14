@@ -4,6 +4,10 @@
 
 //extern Drive chassis;
 
+
+void offensive_middle();
+
+/*
 void far_side_comp_auton();
 void far_side_awp();
 void near_side();
@@ -18,7 +22,7 @@ void defensive_alli_bar();
 void krishsOptimizedTriballAuton();
 void krishsBasicAuton();
 void defensive_push();
-
+*/
 
 
 void drive_example();

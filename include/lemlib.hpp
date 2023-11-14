@@ -1,6 +1,7 @@
 #pragma once
 
 #include "api.h"
+#include "lemlib\api.hpp"
 
 using namespace lemlib;
 

@@ -3,9 +3,8 @@
 
 //put in opcontrol initialize
 void reset_drive_sensors() {
-  left_front_motor.tare_position();
-  right_front_motor.tare_position();
-
+  leftFront.tare_position();
+  rightFront.tare_position();
 }
 
 // Left curve function
@@ -13,7 +12,7 @@ double left_curve_function(double x) {
     double left_curve_scale = 3;
   if (3 != 0) {
     // if (CURVE_TYPE)
-    return (powf(2.718, -(3 / 10)) + powf(2.718, (fabs(x) - 127) / 10) * (1 - powf(2.718, -(3 / 10)))) * x;
+    return (powf(2.718, -(3.0 / 10)) + powf(2.718, (fabs(x) - 127) / 10) * (1 - powf(2.718, -(3.0 / 10)))) * x;
     // else
     // return powf(2.718, ((abs(x)-127)*RIGHT_CURVE_SCALE)/100)*x;
   }
@@ -25,7 +24,7 @@ double right_curve_function(double x) {
     double right_curve_scale = 3;
   if (3 != 0) {
     // if (CURVE_TYPE)
-    return (powf(2.718, -(3 / 10)) + powf(2.718, (fabs(x) - 127) / 10) * (1 - powf(2.718, -(3 / 10)))) * x;
+    return (powf(2.718, -(3.0 / 10)) + powf(2.718, (fabs(x) - 127) / 10) * (1 - powf(2.718, -(3.0 / 10)))) * x;
     // else
     // return powf(2.718, ((abs(x)-127)*RIGHT_CURVE_SCALE)/100)*x;
   }
@@ -41,10 +40,10 @@ void set_tank(int left, int right) {
   
 }
 int left_sensor(){
-    return left_front_motor.get_position();
+    return leftFront.get_position();
 }
 int right_sensor(){
-    return right_front_motor.get_position();
+    return rightFront.get_position();
 }
 void joy_thresh_opcontrol(int l_stick, int r_stick) {
     int JOYSTICK_THRESHOLD = 5;

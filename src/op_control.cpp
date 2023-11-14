@@ -11,20 +11,22 @@ bool allthewaydown = true;
 
 
 void intaker() {
-    //outtake
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-        intake.move_velocity(-400);
-    }
-    //ramp up intake speed
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-        intake.move_velocity(400);
-    }
-    //intake
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        intake.move_velocity(400);
-    }
-    else {
-        intake.move_velocity(0);
+    while(true) {
+        //outtake
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+            intake.move_velocity(-400);
+        }
+        //ramp up intake speed
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+            intake.move_velocity(400);
+        }
+        //intake
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+            intake.move_velocity(400);
+        }
+        else {
+            intake.move_velocity(0);
+        }
     }
 }
 
@@ -49,13 +51,14 @@ void catawow() {
 
 
 void updateCatapult() {
-    while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-            cata.move_velocity(spinVoltage);
-            allthewaydown = !allthewaydown;
+    while(true) {
+        while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+                cata.move_velocity(spinVoltage);
+                allthewaydown = !allthewaydown;
+        }
+        cata.move_velocity(0);
+        allthewaydown = !allthewaydown;
     }
-    cata.move_velocity(0);
-    allthewaydown = !allthewaydown;
-        
     
     // put cata all the way down so we can intake into it
     /* if (allthewaydown) {
@@ -138,28 +141,33 @@ void updateCatapult() {
 
 
 void fireAndReload() {
-    // Spin the catapult for the defined duration to fire
-    cata.move_relative(80, 600);
-    pros::lcd::print(1, "Firing!"); // Debugging
+    while(true) {
 
-    pros::delay(300);
+        // Spin the catapult for the defined duration to fire
+        cata.move_relative(80, 600);
+        pros::lcd::print(1, "Firing!"); // Debugging
 
-    // Reset the rotation sensor for consistency
-    kickerRotation.reset();
+        pros::delay(300);
 
-    // Signal to start loading again
+        // Reset the rotation sensor for consistency
+        kickerRotation.reset();
 
-    return;
+        // Signal to start loading again
+
+        return;
+    }
 }
 
 void monitorButtonAndFire() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-        allthewaydown = true;
-        cata.move_velocity(600);
-    }
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-        allthewaydown = false;
-        cata.move_velocity(600);
+    while(true) {
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+            allthewaydown = true;
+            cata.move_velocity(600);
+        }
+        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+            allthewaydown = false;
+            cata.move_velocity(600);
+        }
     }
 }
 
@@ -178,6 +186,7 @@ void move_the_intake() {
 */
 
 void move_wings() {
+    while(true) {
         //wings false state is in, true state is out
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
             //if false, set true and move wings out
@@ -193,15 +202,18 @@ void move_wings() {
             //if true, set false and move wings back in
 
         } 
+    }
 }
 
 void move_elevation() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-        elev.set_value(true);
-    }
+    while(true) {
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+            elev.set_value(true);
+        }
 
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-        elev.set_value(false);
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+            elev.set_value(false);
+        }
     }
 }
 

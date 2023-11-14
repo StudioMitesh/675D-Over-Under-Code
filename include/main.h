@@ -45,11 +45,11 @@
 #include "autons.hpp"
 #include "lemlib/api.hpp"
 
-// More includes here...
-//
-// . . .
 #include "motor_config.hpp"
 #include "op_control.hpp"
+#include "lemlib.hpp"
+#include "drive.hpp"
+#include "helpers.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

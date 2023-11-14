@@ -44,9 +44,12 @@ void screeen() {
 void initialize() {
 	
 	
-	kicker.set_brake_modes(E_MOTOR_BRAKE_COAST);
-
-	
+	leftFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	leftMid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	leftBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	rightFront.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	rightMid.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "Hello PROS User!");
@@ -57,7 +60,7 @@ void initialize() {
 	chassis.calibrate();
 	chassis.setPose({0,0,0});
 
-	Task screenTask(screeen);
+	pros::Task screenTask(screeen);
 	
 	
 	
@@ -93,7 +96,7 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	pidlattune();
+	offensive_middle();
 }
 
 /**
@@ -114,10 +117,12 @@ void opcontrol() {
 	master.clear();
 	reset_drive_sensors();
 	
-	Task driveTask(arcade_flipped);
-	Task kickerTask(kickerKicks);
-	Task autoFire(autoKick);
-	Task wingsTask(actWings);
+	pros::Task driveTask(arcade_flipped);
+	pros::Task cataTask(monitorButtonAndFire);
+	intaker();
+	updateCatapult();
+	move_wings();
+	move_elevation();
 	//Task cataTask(catapult);
 
 	

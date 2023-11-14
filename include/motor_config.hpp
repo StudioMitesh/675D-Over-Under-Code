@@ -2,6 +2,9 @@
 #include "pros/adi.hpp"
 #include "pros/motors.h"
 
+extern pros::Controller master;
+extern pros::Imu imu;
+
 extern pros::Motor leftFront;
 extern pros::Motor leftMid;
 extern pros::Motor leftBack;

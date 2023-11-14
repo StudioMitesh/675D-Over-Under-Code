@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "675D!",
+    "project_name": "675D ucb",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -191,7 +191,7 @@
     "upload_options": {
       "description": "675D",
       "icon": "pizza",
-      "slot": 3
+      "slot": 1
     }
   }
 }
