@@ -37,22 +37,6 @@ void catapult() {
     cata.move_velocity(0);
 }
 
-
-void fireAndReload() {
-    // Spin the catapult for the defined duration to fire
-    cata.move_relative(80, 600);
-    pros::lcd::print(1, "Firing!"); // Debugging
-
-    pros::delay(300);
-
-    // Reset the rotation sensor for consistency
-    kickerRotation.reset();
-
-    // Signal to start loading again
-
-    return;
-}
-
 void monitorButtonAndFire() {
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         allthewaydown = true;
