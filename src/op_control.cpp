@@ -37,6 +37,30 @@ void catapult() {
     cata.move_velocity(0);
 }
 
+void move_wings() {
+        // if (X) then wings out
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
+                wings.set_value(true); // wings value true means wings are expanded
+        } 
+
+        // if (B) then wings in
+        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+                wings.set_value(false); // wings value false means wings are retracted
+        } 
+}
+
+void move_elevation() {
+    // if (RIGHT ARROW) then elevation out
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        elev.set_value(true);
+    }
+
+    // if (DOWN ARROW) then elevation in
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        elev.set_value(false);
+    }
+}
+
 void monitorButtonAndFire() {
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         allthewaydown = true;
@@ -47,33 +71,3 @@ void monitorButtonAndFire() {
         cata.move_velocity(600);
     }
 }
-
-void move_wings() {
-        //wings false state is in, true state is out
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-            //if false, set true and move wings out
-                wings.set_value(true);
-                wingspos = true;
-            //if true, set false and move wings back in
-
-        } 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-            //if false, set true and move wings out
-                wings.set_value(false);
-                wingspos = false;
-            //if true, set false and move wings back in
-
-        } 
-}
-
-void move_elevation() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-        elev.set_value(true);
-    }
-
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-        elev.set_value(false);
-    }
-}
-
-
