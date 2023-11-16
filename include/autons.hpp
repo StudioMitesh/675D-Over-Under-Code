@@ -6,6 +6,8 @@
 
 
 void offensive_middle();
+void defensive_awp();
+void skills_auton();
 
 /*
 void far_side_comp_auton();

@@ -3,6 +3,27 @@
 using namespace pros;
 
 int start = 0;
+
+// intaker
+void intakes() {
+    pros::delay(100);
+    intake.move_relative(1080, 600);
+    pros::delay(100);
+}
+
+// outaker
+void outtake(int t) {
+  intake.move_velocity(-600);
+  pros::delay(t);
+  intake.move_velocity(0);
+}
+
+//auto wings out
+void autowings(bool set) {
+    wings.set_value(set);
+}
+
+
 /*
 // load the kicker in position to fire
 void load()

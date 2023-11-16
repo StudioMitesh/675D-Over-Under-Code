@@ -29,15 +29,13 @@ void offensive_middle() {
   chassis.moveTo(25, -40, 1000);
   //Intake the pipe triball
   pros::delay(120);
-  intake.move_relative(1080,600);
+  intakes();
   //Turn and drive away from the pipe
   chassis.moveTo(0, -50, 1000);
   //Turn toward goal
   chassis.turnTo(-10, -50, 1000);
   //Outtake the triball
-  intake.move_velocity(-600);
-  pros::delay(350);
-  intake.move_velocity(0);
+  outtake(350);
   //Push them into the goal
   chassis.moveTo(-15, -50, 1000);
   /*
@@ -61,6 +59,31 @@ void offensive_middle() {
   */
 }
 
-void matchOffense(){
-    chassis.setPose(50, -55, 0);
+void defensive_awp(){
+    chassis.setPose(0, 0, 15);
+    //Drive to triball in the middle
+    chassis.moveTo(30, 55, 1500);
+    //Pick up middle triball
+    intakes();
+    //Back up immediately
+    chassis.moveTo(0, 25, 1500);
+    pros::delay(500);
+    //Swing into the goal
+    chassis.turnTo(30, 90, 1000);
+    chassis.moveTo(-17, 18, 1500);
+    //Turn for steal
+    chassis.turnTo(0, -10, 1500);
+    //Extend wings out
+    autowings(true);
+    //Move and steal the triball from the goal
+    chassis.moveTo(-8, -1, 1000);
+    //Turn with steal
+    chassis.turnTo(20, 0, 1000);
+    //Pull the steal out
+    chassis.moveTo(15, -1, 1000);
+}
+
+
+void skills_auton() {
+
 }

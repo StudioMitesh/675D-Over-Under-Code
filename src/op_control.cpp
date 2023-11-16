@@ -11,22 +11,20 @@ bool allthewaydown = true;
 
 
 void intaker() {
-    while(true) {
-        //outtake
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-            intake.move_velocity(-400);
-        }
-        //ramp up intake speed
-        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-            intake.move_velocity(400);
-        }
-        //intake
-        else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-            intake.move_velocity(400);
-        }
-        else {
-            intake.move_velocity(0);
-        }
+    //outtake
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
+        intake.move_velocity(-400);
+    }
+    //ramp up intake speed
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+        intake.move_velocity(400);
+    }
+    //intake
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+        intake.move_velocity(400);
+    }
+    else {
+        intake.move_velocity(0);
     }
 }
 
@@ -51,14 +49,13 @@ void catawow() {
 
 
 void updateCatapult() {
-    while(true) {
-        while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-                cata.move_velocity(spinVoltage);
-                allthewaydown = !allthewaydown;
-        }
-        cata.move_velocity(0);
-        allthewaydown = !allthewaydown;
+    
+    while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+            cata.move_velocity(spinVoltage);
+            allthewaydown = !allthewaydown;
     }
+    cata.move_velocity(0);
+    allthewaydown = !allthewaydown;
     
     // put cata all the way down so we can intake into it
     /* if (allthewaydown) {
@@ -186,35 +183,30 @@ void move_the_intake() {
 */
 
 void move_wings() {
-    while(true) {
         //wings false state is in, true state is out
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_X)) {
-            //if false, set true and move wings out
-                wings.set_value(true);
-                wingspos = true;
-            //if true, set false and move wings back in
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+        //if false, set true and move wings out
+            wings.set_value(true);
+            wingspos = true;
+        //if true, set false and move wings back in
 
-        } 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-            //if false, set true and move wings out
-                wings.set_value(false);
-                wingspos = false;
-            //if true, set false and move wings back in
+    } 
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+        //if false, set true and move wings out
+            wings.set_value(false);
+            wingspos = false;
+        //if true, set false and move wings back in
 
-        } 
-    }
+    } 
 }
 
 void move_elevation() {
-    while(true) {
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-            elev.set_value(true);
-        }
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        elev.set_value(true);
+    }
 
-        if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-            elev.set_value(false);
-        }
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        elev.set_value(false);
     }
 }
-
 

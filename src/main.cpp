@@ -96,7 +96,9 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	offensive_middle();
+	defensive_awp();
+	//offensive_middle();
+	//skills_auton();
 }
 
 /**
@@ -118,12 +120,14 @@ void opcontrol() {
 	reset_drive_sensors();
 	
 	pros::Task driveTask(arcade_flipped);
-	pros::Task cataTask(monitorButtonAndFire);
-	intaker();
-	updateCatapult();
-	move_wings();
-	move_elevation();
-	//Task cataTask(catapult);
+	//pros::Task cataTask(monitorButtonAndFire);
+	while(true) {
+		intaker();
+		updateCatapult();
+		move_wings();
+		move_elevation();
+	}
+		//Task cataTask(catapult);
 
 	
 	
