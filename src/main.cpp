@@ -52,7 +52,7 @@ void initialize() {
 	rightBack.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	pros::lcd::set_text(1, "675D on top :)");
 	
 
 	reset_drive_sensors();

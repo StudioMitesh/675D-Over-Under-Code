@@ -22,68 +22,127 @@ void testPath(){
 void offensive_middle() {
   chassis.setPose(0,0,0);
   //Drop off match load in the middle
-  chassis.moveTo(0, -47.5, 1000);
+  chassis.moveTo(0, -47.5, 1000, 100);
+  cata.move_relative(360, 100);
   //Turn to triball on the pipe
   //chassis.turnTo(25, -35, 1000);
   //Move to the pipe triball
-  chassis.moveTo(25, -40, 1000);
+  chassis.moveTo(25, -40, 1000, 125);
   //Intake the pipe triball
   pros::delay(120);
   intakes();
   //Turn and drive away from the pipe
-  chassis.moveTo(0, -50, 1000);
+  chassis.moveTo(0, -50, 1000, 115);
   //Turn toward goal
-  chassis.turnTo(-10, -50, 1000);
+  chassis.turnTo(-20, -60, 1000);
+  //Reset positioning pose
+  chassis.setPose(0,0,0);
   //Outtake the triball
+  pros::delay(500);
   outtake(350);
+  pros::delay(500);
   //Push them into the goal
-  chassis.moveTo(-15, -50, 1000);
-  /*
-  //Intake the pipe triball
-  chassis.set_drive_pid(60, DRIVE_SPEED);
-  chassis.wait_drive();
-  pros::delay(120);
-  intake.move_relative(1080, 600); //intake
-  chassis.set_turn_pid(240, TURN_SPEED);
-  chassis.wait_drive();
-  pros::delay(200);
-  intake.move_velocity(-600);
-  pros::delay(350);
-  intake.move_velocity(0); //outtake
-  pros::delay(50);
-  chassis.set_turn_pid(70, TURN_SPEED);
-  chassis.wait_drive();
-  wings.set_value(true);
-  chassis.set_drive_pid(-75, DRIVE_SPEED_FASTEST);
-  chassis.wait_drive();
-  */
+  chassis.moveTo(-2, 25, 1000, 100);
+  pros::delay(250);
+  //Turn to other triball
+  chassis.turnTo(-8, -8, 1500);
+  pros::delay(250);
+  //Move to pick up other triball
+  chassis.moveTo(-8, -8, 1000, 100);
+  //Intake the triball
+  pros::delay(250);
+  intakes();
+  pros::delay(250);
+  //Spin back to goal
+  chassis.turnTo(-10, 25, 1000);
+  pros::delay(250);
+  //Outtake the tri
+  outtake(300);
+  //Push it into the triball
+  chassis.moveTo(-10, 25, 1000, 135);
 }
 
 void defensive_awp(){
     chassis.setPose(0, 0, 15);
+    //Unlock intake
+    cata.move_relative(360, 100);
     //Drive to triball in the middle
-    chassis.moveTo(30, 55, 1500);
+    chassis.moveTo(30.5, 55, 1500, 155);
     //Pick up middle triball
     intakes();
     //Back up immediately
-    chassis.moveTo(0, 25, 1500);
+    chassis.moveTo(10, 30, 1500, 90);
     pros::delay(500);
+    //Turn to new position
+    //Now back up to position
+    chassis.moveTo(-11.5, 17.5, 1500, 100);
     //Swing into the goal
-    chassis.turnTo(30, 90, 1000);
-    chassis.moveTo(-17, 18, 1500);
+    /*
+    chassis.turnTo(-3,18, 1000, 100);
+    chassis.moveTo(-3, 18, 1500, 100);
+    */
     //Turn for steal
-    chassis.turnTo(0, -10, 1500);
+    chassis.turnTo(5, 0, 1500);
+    //Reset the pose
+    chassis.setPose(0,0,0);
     //Extend wings out
     autowings(true);
     //Move and steal the triball from the goal
-    chassis.moveTo(-8, -1, 1000);
+    chassis.moveTo(0, 10, 1000, 100);
     //Turn with steal
-    chassis.turnTo(20, 0, 1000);
+    chassis.turnTo(-8, 20, 1000);
     //Pull the steal out
-    chassis.moveTo(15, -1, 1000);
+    chassis.moveTo(-8, 20, 1000, 100);
+    //Bring the wings in
+    autowings(false);
+    pros::delay(1000);
+    //Reset position
+    chassis.setPose(0,0,0);
+    //Push triballs over the line
+    chassis.moveTo(-3, 25.5, 1200, 125);
+    //Outtake the triball
+    outtake(300);
+    //Turn and touch bar
+    chassis.turnTo(-7, 35, 1200);
+    //Move a lil bit
+    chassis.moveTo(-5, 27, 1200, 125);
+
 }
 
 
 void skills_auton() {
 
 }
+
+/*
+void skills(){
+    
+    autoFire();
+    pros::delay(40000);
+    chassis.setPose(0,0, 0);
+    chassis.moveTo(31, -68, 2000, 125);
+ 
+   
+    
+    chassis.setPose(0, 0, 0);
+    chassis.moveTo(-10, -10, 1000, 150);
+   
+    chassis.moveTo(-20, 10, 1000, 150);
+    chassis.setPose(0, 0, 0);
+    autoWings(true);
+    chassis.moveTo(-10, -10, 1000, 75);
+    chassis.moveTo(-10, -15, 1000, 100);
+    chassis.setPose(0, 0,0);
+    chassis.moveTo(-15, 10, 1000, 100);
+    chassis.moveTo(-10,-5, 1000 , 100);
+    chassis.setPose(0, 0,0);
+    chassis.moveTo(-15, 10, 1000, 100);
+    chassis.moveTo(-10,-5, 1000 , 100);
+    chassis.setPose(0, 0,0);
+    chassis.moveTo(-15, 10, 1000, 100);
+    chassis.moveTo(-10,-5, 1000 , 100);
+    chassis.setPose(0, 0,0);
+    chassis.moveTo(-15, 10, 1000, 100);
+    chassis.moveTo(-10,-5, 1000 , 100);
+}
+*/
