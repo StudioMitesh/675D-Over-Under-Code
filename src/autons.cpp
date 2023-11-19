@@ -20,52 +20,52 @@ void testPath(){
 
 
 void offensive_middle() {
-  chassis.setPose(0,0,0);
-  //Drop off match load in the middle
-  chassis.moveTo(0, -47.5, 1000, 100);
-  cata.move_relative(360, 100);
-  //Turn to triball on the pipe
-  //chassis.turnTo(25, -35, 1000);
-  //Move to the pipe triball
-  chassis.moveTo(25, -40, 1000, 125);
-  //Intake the pipe triball
-  pros::delay(120);
-  intakes();
-  //Turn and drive away from the pipe
-  chassis.moveTo(0, -50, 1000, 115);
-  //Turn toward goal
-  chassis.turnTo(-20, -60, 1000);
-  //Reset positioning pose
-  chassis.setPose(0,0,0);
-  //Outtake the triball
-  pros::delay(500);
-  outtake(350);
-  pros::delay(500);
-  //Push them into the goal
-  chassis.moveTo(-2, 25, 1000, 100);
-  pros::delay(250);
-  //Turn to other triball
-  chassis.turnTo(-8, -8, 1500);
-  pros::delay(250);
-  //Move to pick up other triball
-  chassis.moveTo(-8, -8, 1000, 100);
-  //Intake the triball
-  pros::delay(250);
-  intakes();
-  pros::delay(250);
-  //Spin back to goal
-  chassis.turnTo(-10, 25, 1000);
-  pros::delay(250);
-  //Outtake the tri
-  outtake(300);
-  //Push it into the triball
-  chassis.moveTo(-10, 25, 1000, 135);
+    chassis.setPose(0,0,0);
+    //Drop off match load in the middle
+    chassis.moveTo(0, -47.5, 1000, 100);
+    releaseIntake();
+    //Turn to triball on the pipe
+    //chassis.turnTo(25, -35, 1000);
+    //Move to the pipe triball
+    chassis.moveTo(25, -40, 1000, 125);
+    //Intake the pipe triball
+    pros::delay(120);
+    intakes();
+    //Turn and drive away from the pipe
+    chassis.moveTo(0, -50, 1000, 115);
+    //Turn toward goal
+    chassis.turnTo(-20, -60, 1000);
+    //Reset positioning pose
+    chassis.setPose(0,0,0);
+    //Outtake the triball
+    pros::delay(500);
+    outtake(350);
+    pros::delay(500);
+    //Push them into the goal
+    chassis.moveTo(-2, 25, 1000, 100);
+    pros::delay(250);
+    //Turn to other triball
+    chassis.turnTo(-8, -8, 1500);
+    pros::delay(250);
+    //Move to pick up other triball
+    chassis.moveTo(-8, -8, 1000, 100);
+    //Intake the triball
+    pros::delay(250);
+    intakes();
+    pros::delay(250);
+    //Spin back to goal
+    chassis.turnTo(-10, 25, 1000);
+    pros::delay(250);
+    //Outtake the tri
+    outtake(300);
+    //Push it into the triball
+    chassis.moveTo(-10, 25, 1000, 135);
 }
 
 void defensive_awp(){
     chassis.setPose(0, 0, 15);
     //Unlock intake
-    cata.move_relative(360, 100);
+    releaseIntake();
     //Drive to triball in the middle
     chassis.moveTo(30.5, 55, 1500, 155);
     //Pick up middle triball
@@ -111,7 +111,58 @@ void defensive_awp(){
 
 
 void skills_auton() {
-
+    //Set the pose at the start
+    chassis.setPose(0,0,0);
+    //Push the triball under the close goal
+    chassis.moveTo(15, -20, 1000, 140);
+    //Release the intake for the rest of the run
+    releaseIntake();
+    //Back up off goal
+    chassis.moveTo(15, -5, 1000, 100);
+    //Turn for the cata motion
+    chassis.turnTo(-75, -5, 1000);
+    //Back up against the match load zone thingy
+    chassis.moveTo(20, -5, 750, 125);
+    //Open wings so we touch the match load zone thingy
+    autowings(true);
+    pros::delay(200);
+    //Automatically spin the cata
+    autoCata(9500, 40000);
+    //Reset the pose for the grand push
+    chassis.setPose(0,0,0);
+    //Move up a lil bit to prepare for 180
+    chassis.moveTo(5, 25, 1000, 125);
+    //Retract wings for 180
+    autowings(false);
+    //Make 180 so wings are ready
+    chassis.turnTo(-5, 0, 1000);
+    //Move to position to push underneath the hang bar
+    chassis.moveTo(15, 40, 1000, 100);
+    //Turn for grand push time
+    chassis.turnTo(15, 90, 1000);
+    //Reset the pose for this part
+    chassis.setPose(0,0,0);
+    //Push all the tris to other side
+    chassis.moveTo(0, -50, 1000, 135);
+    //Extend wings now
+    autowings(true);
+    //Push triballs into the goal at max
+    chassis.moveTo(7.5, -60, 1000, 150);
+    chassis.moveTo(15, -57.5, 1000, 175);
+    //Back out and ram back in again
+    chassis.moveTo(-5, -57.5, 1000, 150);
+    chassis.moveTo(15, -57.5, 1000, 175);
+    //Wings back in
+    autowings(false);
+    //Move back to a reasonable position to set up for hang
+    chassis.moveTo(0, -50, 1000, 140);
+    //Reset pose to go for hang
+    chassis.setPose(0,0,0);
+    //Open the elevation with the piston
+    hangtime();
+    //Move to elevation bar
+    chassis.moveTo(0, 55, 1000, 150);
+    pros::delay(500);
 }
 
 /*

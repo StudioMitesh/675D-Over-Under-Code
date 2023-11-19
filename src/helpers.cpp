@@ -23,6 +23,22 @@ void autowings(bool set) {
     wings.set_value(set);
 }
 
+//spins the cata to release the intake down
+void releaseIntake() {
+    cata.move_relative(360, 100);
+}
+
+//constant fire the cata for set time at set voltage
+void autoCata(double spinny, double t) {
+    cata.move_voltage(spinny);
+    pros::delay(t);
+    cata.move_voltage(0);
+}
+
+//open the elevation w the piston
+void hangtime() {
+    elev.set_value(true);
+}
 
 /*
 // load the kicker in position to fire

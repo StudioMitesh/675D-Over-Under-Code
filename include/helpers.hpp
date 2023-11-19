@@ -6,3 +6,6 @@
 void intakes();
 void outtake(int t);
 void autowings(bool set);
+void releaseIntake();
+void autoCata(double spinny, double t);
+void hangtime();
