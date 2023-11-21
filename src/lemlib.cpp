@@ -19,23 +19,23 @@ OdomSensors_t sensors{
 };
 
 ChassisController_t lateralController{
-    20,
+    12,
     30,
     1,
     100,
     3,
     500,
-    5
+    20
 };
 
 ChassisController_t angularController{
-    10,
-    40,
+    6.5,
+    37,
     1,
     100,
     3,
     500,
-    50
+    20
 };
 
 Chassis chassis(drivetrain, lateralController, angularController, sensors);

@@ -201,11 +201,11 @@ void move_wings() {
 }
 
 void move_elevation() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
         elev.set_value(true);
     }
 
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
         elev.set_value(false);
     }
 }
