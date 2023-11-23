@@ -19,6 +19,47 @@ void testPath(){
 */
 
 
+void new_offensive() {
+    chassis.setPose(0,0,0);
+    releaseIntake();
+    pros::delay(500);
+    intakes();
+    chassis.moveTo(0, 50, 1250, 135);
+    chassis.setPose(0,0,0);
+    chassis.turnTo(15, 8, 1000);
+    outtake(350); 
+    chassis.setPose(0,0,0);
+    chassis.turnTo(0, -15, 1000);
+    pros::delay(500);
+    chassis.setPose(0,0,0);
+    chassis.moveTo(19, 29, 1000, 100);
+    intakes();
+    pros::delay(250);
+    chassis.turnTo(17,35,1000);
+    //pros::delay(750);
+    //chassis.setPose(0,0,0);
+    //chassis.turnTo(-5, -15, 1000);
+    pros::delay(250);
+    autowings(true);
+    chassis.setPose(0,0,0);
+    chassis.moveTo(-2, -40, 1000, 150);
+    chassis.moveTo(-2, -25, 1000, 125);
+    autowings(false);
+    chassis.turnTo(-2, -40, 1000);
+    outtake(300);
+    chassis.moveTo(-2, -40, 1000, 150);
+    chassis.moveTo(-2, -25, 1000);
+    chassis.turnTo(-15, 0, 1000);
+    chassis.moveTo(-15, 0, 1000, 140);
+    intakes();
+    chassis.moveTo(-2.5, -10, 1000, 120);
+    chassis.turnTo(-2.5, -40, 1000);
+    outtake(300);
+    chassis.moveTo(-2.5, -40, 1000, 150);
+    chassis.moveTo(-2.5, -30, 1000);
+
+}
+
 void offensive_middle() {
     chassis.setPose(0,0,0);
     //Drop off match load in the middle
@@ -159,37 +200,47 @@ void single_tri_off() {
     chassis.moveTo(0, 0, 1000);
 }
 
-
 void skills_auton() {
     //Set the pose at the start
     chassis.setPose(0,0,0);
     //Push the triball under the close goal
-    chassis.moveTo(15, -20, 1000, 140);
+    chassis.moveTo(-10, -10, 1000, 100);
     //Release the intake for the rest of the run
     releaseIntake();
-    //Back up off goal
-    chassis.moveTo(15, -5, 1000, 100);
-    //Turn for the cata motion
-    chassis.turnTo(-75, -5, 1000);
-    //Back up against the match load zone thingy
-    chassis.moveTo(20, -5, 750, 125);
-    //Open wings so we touch the match load zone thingy
+    chassis.turnTo(-10, 0, 1000);
     autowings(true);
-    pros::delay(200);
     //Automatically spin the cata
-    autoCata(9500, 3000);
+    autoCata(9500, 40000);
+    autowings(false);
+    //Back up off goal
+    chassis.moveTo(0, 0, 1000, 100);
+    //Turn for the cata motion
+    chassis.turnTo(10, 1, 1000);
+    //Reset pose
+    chassis.setPose(0,0,0);
+    //Back up and push match load in
+    chassis.moveTo(0, -35, 750, 180);
+    //Move back to og pos
+    chassis.moveTo(0,0, 1000);
     //Reset the pose for the grand push
     chassis.setPose(0,0,0);
-    //Move up a lil bit to prepare for 180
-    chassis.moveTo(5, 25, 1000, 125);
-    //Retract wings for 180
+    //Move up a lil bit to prepare for push
+    chassis.moveTo(-5, 10, 1000, 125);
+    //Retract wings for push
     autowings(false);
-    //Make 180 so wings are ready
-    chassis.turnTo(-5, 0, 1000);
     //Move to position to push underneath the hang bar
-    chassis.moveTo(15, 40, 1000, 100);
+    chassis.moveTo(-35, 30, 1000, 100);
+    chassis.moveTo(-42.5, 170, 1000);
+    chassis.setPose(0,0,0);
+    chassis.turnTo(0, -10, 1000);
+    autowings(true);
+    chassis.setPose(0,0,0);
+    chassis.moveTo(0, -40, 1000, 150);
+    chassis.moveTo(10, -50, 1000, 160);
+    chassis.moveTo(35, -55, 1000, 190);
+    /*
     //Turn for grand push time
-    chassis.turnTo(15, 90, 1000);
+    chassis.turnTo(-35, -90, 1000);
     //Reset the pose for this part
     chassis.setPose(0,0,0);
     //Push all the tris to other side
@@ -213,6 +264,7 @@ void skills_auton() {
     //Move to elevation bar
     chassis.moveTo(0, 55, 1000, 150);
     pros::delay(500);
+    */
 }
 
 void defensive_elim() {

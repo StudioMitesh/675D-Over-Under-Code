@@ -97,8 +97,9 @@ void competition_initialize() {}
  */
 void autonomous() {
 	//defensive_awp();
-	simple_d_awp();
+	//simple_d_awp();
 	//offensive_middle();
+	new_offensive();
 	//skills_auton();
 	//single_tri_off();
 	//defensive_elim();
