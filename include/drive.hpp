@@ -16,3 +16,4 @@ void set_tank(int left, int right);
 void joy_thresh_opcontrol(int l_stick, int r_stick);
 
 void arcade_flipped();
+void tank();

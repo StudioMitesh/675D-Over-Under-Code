@@ -19,7 +19,7 @@ OdomSensors_t sensors{
 };
 
 ChassisController_t lateralController{
-    12,
+    11,
     30,
     1,
     100,
@@ -29,7 +29,7 @@ ChassisController_t lateralController{
 };
 
 ChassisController_t angularController{
-    6.5,
+    6,
     37,
     1,
     100,

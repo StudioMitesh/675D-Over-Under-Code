@@ -25,7 +25,6 @@ ADIDigitalOut wings('A');
 ADIDigitalOut elev('B');
 //pros::ADIDigitalIn limitSwitch('C');
 
-pros::Rotation kickerRotation(1);
 
 
 

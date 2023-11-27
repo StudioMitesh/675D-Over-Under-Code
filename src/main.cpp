@@ -16,10 +16,10 @@ void on_center_button() {
 	}
 }
 
-void screeen() {
+void disp() {
     // loop forever
     while (true) {
-       lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
+       	lemlib::Pose pose = chassis.getPose(); // get the current position of the robot
         pros::lcd::print(3, "x: %f", pose.x); // print the x position
         pros::lcd::print(4, "y: %f", pose.y); // print the y position
         pros::lcd::print(5, "heading: %f", pose.theta); // print the heading
@@ -31,7 +31,7 @@ void screeen() {
 		master.print(1, 0, "LAmp %.2lf", kickerLeft.get_current_draw());
 		master.print(1, 8, "Ltor %.2lf", kickerLeft.get_torque());
 		*/
-	master.print(0, 0, "rot: %i", kickerRotation.get_angle());
+	master.print(0, 0, "good luck");
 	
     }
 }
@@ -60,7 +60,7 @@ void initialize() {
 	chassis.calibrate();
 	chassis.setPose({0,0,0});
 
-	pros::Task screenTask(screeen);
+	pros::Task displayTask(disp);
 	
 	
 	
@@ -123,7 +123,7 @@ void opcontrol() {
 	master.clear();
 	reset_drive_sensors();
 	
-	pros::Task driveTask(arcade_flipped);
+	pros::Task driveTask(tank);
 	//pros::Task cataTask(monitorButtonAndFire);
 	while(true) {
 		intaker();

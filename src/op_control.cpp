@@ -1,5 +1,29 @@
 #include "main.h"
 
+/*
+CONTROLLER OVERVIEW::
+Drive type: tank
+L1: Outtake
+L2: Intake
+R1: 
+R2: 
+
+X: 
+A: 
+B: 
+Y: 
+
+Up: 
+Right: 
+Down: 
+Left: Intake 1.5 times faster ?
+*/
+
+
+
+
+
+
 bool wingspos = false; //false is in, true is out
 bool isMoving = true;
 bool kickerToggle = true;
@@ -17,7 +41,7 @@ void intaker() {
     }
     //ramp up intake speed
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
-        intake.move_velocity(400);
+        intake.move_velocity(600);
     }
     //intake
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
@@ -183,21 +207,11 @@ void move_the_intake() {
 */
 
 void move_wings() {
-        //wings false state is in, true state is out
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-        //if false, set true and move wings out
-            wings.set_value(true);
-            wingspos = true;
-        //if true, set false and move wings back in
-
-    } 
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-        //if false, set true and move wings out
-            wings.set_value(false);
-            wingspos = false;
-        //if true, set false and move wings back in
-
-    } 
+        wings.set_value(!wingspos);
+        wingspos = !wingspos;
+        pros::delay(50);
+    }
 }
 
 void move_elevation() {
