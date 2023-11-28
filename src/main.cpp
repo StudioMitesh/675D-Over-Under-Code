@@ -99,8 +99,8 @@ void autonomous() {
 	//defensive_awp();
 	//simple_d_awp();
 	//offensive_middle();
-	new_offensive();
-	//skills_auton();
+	//new_offensive();
+	skills_auton();
 	//single_tri_off();
 	//defensive_elim();
 }
@@ -123,7 +123,7 @@ void opcontrol() {
 	master.clear();
 	reset_drive_sensors();
 	
-	pros::Task driveTask(tank);
+	pros::Task driveTask(arcade_flipped);
 	//pros::Task cataTask(monitorButtonAndFire);
 	while(true) {
 		intaker();
@@ -132,7 +132,5 @@ void opcontrol() {
 		move_elevation();
 	}
 		//Task cataTask(catapult);
-
-	
 	
 }

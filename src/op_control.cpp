@@ -5,23 +5,19 @@ CONTROLLER OVERVIEW::
 Drive type: tank
 L1: Outtake
 L2: Intake
-R1: 
-R2: 
+R1: Slapper
+R2: Wings macro in/out
 
 X: 
-A: 
+A: Elevation piston down/out
 B: 
-Y: 
+Y: Elevation piston up/in
 
 Up: 
 Right: 
 Down: 
 Left: Intake 1.5 times faster ?
 */
-
-
-
-
 
 
 bool wingspos = false; //false is in, true is out
@@ -210,7 +206,7 @@ void move_wings() {
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
         wings.set_value(!wingspos);
         wingspos = !wingspos;
-        pros::delay(50);
+        pros::delay(300);
     }
 }
 
