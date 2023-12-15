@@ -50,6 +50,7 @@
 #include "lemlib.hpp"
 #include "drive.hpp"
 #include "helpers.hpp"
+#include "skills.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

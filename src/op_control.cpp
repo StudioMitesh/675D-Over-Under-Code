@@ -6,16 +6,16 @@ Drive type: tank
 L1: Outtake
 L2: Intake
 R1: Slapper
-R2: Wings macro in/out
+R2: 
 
 X: 
-A: Elevation piston down/out
-B: 
+A: 
+B: Elevation piston down/out
 Y: Elevation piston up/in
 
 Up: 
-Right: 
-Down: 
+Right: Wings in/out macro
+Down: Wings in/out macro
 Left: Intake 1.5 times faster ?
 */
 
@@ -25,9 +25,9 @@ bool isMoving = true;
 bool kickerToggle = true;
 const double targetAngle = 19870;
 const double targAngle2 = 22525;
-const int spinVoltage = 9500;
+const int spinVoltage = 10000;
 bool shouldLoad = true;
-bool allthewaydown = true;
+bool movement = false;
 
 
 void intaker() {
@@ -70,12 +70,15 @@ void catawow() {
 
 void updateCatapult() {
     
-    while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-            cata.move_velocity(spinVoltage);
-            allthewaydown = !allthewaydown;
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+            if (!movement) {
+                cata.move_voltage(spinVoltage);
+            }
+            else if (movement) {
+                cata.move_voltage(0);
+            }
+            movement = !movement;
     }
-    cata.move_velocity(0);
-    allthewaydown = !allthewaydown;
     
     // put cata all the way down so we can intake into it
     /* if (allthewaydown) {
@@ -178,11 +181,11 @@ void fireAndReload() {
 void monitorButtonAndFire() {
     while(true) {
         if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
-            allthewaydown = true;
+            movement = true;
             cata.move_velocity(600);
         }
         else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-            allthewaydown = false;
+            movement = false;
             cata.move_velocity(600);
         }
     }
@@ -203,7 +206,12 @@ void move_the_intake() {
 */
 
 void move_wings() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        wings.set_value(!wingspos);
+        wingspos = !wingspos;
+        pros::delay(300);
+    }
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
         wings.set_value(!wingspos);
         wingspos = !wingspos;
         pros::delay(300);
@@ -215,7 +223,7 @@ void move_elevation() {
         elev.set_value(true);
     }
 
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_A)) {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
         elev.set_value(false);
     }
 }

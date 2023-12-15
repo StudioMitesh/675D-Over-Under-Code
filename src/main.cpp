@@ -96,13 +96,16 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	//defensive_awp();
-	//simple_d_awp();
-	//offensive_middle();
+	//offensive autons
+	offensive_six();
 	//new_offensive();
-	skills_auton();
-	//single_tri_off();
+
+	//defensive autons
+	//simple_d_awp();
 	//defensive_elim();
+
+	//skills auton
+	//skills_auton();
 }
 
 /**
