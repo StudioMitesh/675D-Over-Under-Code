@@ -23,27 +23,143 @@ void testPath(){
 void offensive_six() {
     //set everything up
     chassis.setPose(0,0,0);
+    cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     releaseIntake();
-    pros::delay(250);
+    pros::delay(500);
+    //chassis.moveTo(0, 7, 600, 100);
     //intake the tri underneath the thing
     intakes();
+    
     //move backward
-    chassis.moveTo(0, -50, 1000, 150);
+    chassis.moveTo(0, -40, 750, 90);
+
+    pros::delay(250);
+    
     //turn exactly 45 degrees diagonally
-    chassis.turnTo(-30, -20, 1000);
+    chassis.turnTo(-30, 0, 750); //-10, 0
+
+    //pros::delay(500);
+
+    //autowings(true);
+
+    chassis.setPose(0,0,0);
+
+    chassis.moveTo(0, -35, 750, 90);
+
+    //pros::delay(500);
+
+    //autowings(false);
+
+    chassis.setPose(0,0,0);
+
+    chassis.turnTo(-7, 0, 750, false, 100); // false (default), 100 speed (half)
+
+    chassis.setPose(0,0,0);
+
+    chassis.moveTo(0, -30, 750, 195);
+
+    //pros::delay(200);
+
+    chassis.setPose(0,0,0);
+
+    chassis.moveTo(0, 15, 750, 100);
+
+    chassis.turnTo(10, 15*3.14, 750, 150);
+
+    outtake(250);
+
+    chassis.setPose(0,0,0);
+
+    chassis.moveTo(2, 25, 350, 190);
+       
+    chassis.moveTo(0, -15, 500, 150);
+
+    chassis.turnTo(-19, 0, 500);
+
+    chassis.setPose(0,0,0);
+
+    // now get ready to go towards mmiddle of field!
+    chassis.moveTo(7, 70, 1250, 150);
+
+    intakes();
+
+    pros::delay(500);
+
+    chassis.setPose(0,0,0);
+
+    chassis.turnTo(15, -10, 650);
+
+    chassis.setPose(0,0,0);
+    
+    chassis.moveTo(1, 75, 750, 190);
+
+    chassis.moveTo(0, 57.5, 500);
+
+    chassis.turnTo(40, 1, 500);
+    
+    chassis.moveTo(40, 1, 500, 190);
+
+    intakes();
+
+    pros::delay(500);
+    
+    chassis.turnTo(0, 75, 300);
+
+    chassis.moveTo(1.5, 90, 500, 190);
+
+    /*
+    chassis.setPose(0,0,0);
+    pros::delay(350);
+
+    chassis.moveTo(0, -25, 750, 100);
+
+    chassis.setPose(0,0,0);
+
+    chassis.turnTo(-20, 0, 250);
+
+    chassis.setPose(0,0,0);
+
+    chassis.moveTo(0, -25, 250, 190);
+
+    //chassis.setPose()
+
+    
     //open the wings
     //autowings(true);
+
+    
     //back up and grab the match load
     chassis.setPose(0,0,0);
-    chassis.moveTo(0, -30, 1000, 135);
-    //bring wings back
+    chassis.moveTo(0, -25, 1000, 75);
+
+    // brings wings back
     //autowings(false);
-    //turn to the goal
-    chassis.turnTo(30, -60, 1000);
-    //push the tris (2-3) into the goal
-    chassis.setPose(0,0,0);
+
+    // turn the bot 180 degrees so that the intake is facing towards the goal
+    chassis.turnTo(-15, -35, 300);
+    chassis.turnTo(30, -55, 1000);
+    chassis.setPose(0, 0, 0);
+
+    //outakes
     outtake(250);
-    chassis.moveTo(0, 35, 1000, 175);
+
+    // move forward and push into goal
+    chassis.moveTo(5, 35, 1000, 195);
+
+
+    //turn to the goal
+    chassis.turnTo(30, -60, 1000, true);
+
+    //bring wings back
+    autowings(false);
+    
+
+    
+    // back out and then go back forward to push the triballs in
+    chassis.moveTo(0, 5, 1000, 100);
+    chassis.moveTo(0, -8, 1000, 100);
+
+    
     //back out of the goal
     chassis.moveTo(0, 25, 1000, 100);
     chassis.turnTo(3, 35, 1000);
@@ -70,9 +186,9 @@ void offensive_six() {
     //back off the goal
     chassis.moveTo(0, 80, 750, 175);
     //turn to last tribal
-    chassis.turnTo(40, 0, 750);
+    chassis.turnTo(27, 0, 750);
     //go to last triball
-    chassis.moveTo(40, 0, 1000, 160);
+    chassis.moveTo(27, 0, 1000, 160);
     //intake the last triball
     intakes();
     //move back to the mid
@@ -84,7 +200,7 @@ void offensive_six() {
     chassis.moveTo(0, 100, 500, 180);
     //back off
     chassis.moveTo(0, 75, 750, 125);
-    
+    */
 
 
     
@@ -197,7 +313,7 @@ void simple_d_awp() {
     chassis.turnTo(-2, 5, 1000);
     pros::delay(500);
     autowings(true);
-    pros::delay(750);
+    pros::delay(1250);
     chassis.setPose(0,0,0);
     chassis.moveTo(-1, 15, 1000, 100);
     chassis.turnTo(-9, 23, 1000);
@@ -211,6 +327,7 @@ void simple_d_awp() {
     chassis.moveTo(-2.5, 32, 1000, 90);
     outtake(500);
 }
+
 
 void defensive_awp(){
     chassis.setPose(0, 0, 15);

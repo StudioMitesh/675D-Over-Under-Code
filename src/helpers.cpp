@@ -25,7 +25,7 @@ void autowings(bool set) {
 
 //spins the cata to release the intake down
 void releaseIntake() {
-    cata.move_relative(360, 100);
+    cata.move_relative(400, 100);
 }
 
 //constant fire the cata for set time at set voltage
