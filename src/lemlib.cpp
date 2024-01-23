@@ -2,15 +2,16 @@
 
 using namespace lemlib;
 
-Drivetrain_t drivetrain{
+Drivetrain drivetrain{
     &leftMotors,
     &rightMotors,
     10.2,
     2.75,
-    480
+    480,
+    2
 };
 
-OdomSensors_t sensors{
+OdomSensors sensors{
     nullptr,
     nullptr,
     nullptr,
@@ -18,9 +19,11 @@ OdomSensors_t sensors{
     &imu
 };
 
-ChassisController_t lateralController{
+ControllerSettings lateralController{
     11,
+    0,
     30,
+    0,
     1,
     100,
     3,
@@ -28,9 +31,11 @@ ChassisController_t lateralController{
     20
 };
 
-ChassisController_t angularController{
+ControllerSettings angularController{
     6,
+    0,
     37,
+    0,
     1,
     100,
     3,
