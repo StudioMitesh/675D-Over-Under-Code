@@ -2,25 +2,26 @@
 
 /*
 CONTROLLER OVERVIEW::
-Drive type: tank
+Drive type: arcade
 L1: Outtake
 L2: Intake
 R1: Slapper
-R2: 
+R2: Front wings
 
 X: 
 A: 
-B: Elevation piston down/out
-Y: Elevation piston up/in
+B: Catapult to pos
+Y: Back wings
 
 Up: 
-Right: Wings in/out macro
-Down: Wings in/out macro
-Left: Intake 1.5 times faster ?
+Right: Elevation
+Down: Outtake full speed
+Left: 
 */
 
-
-bool wingspos = false; //false is in, true is out
+bool elevpos = true;
+bool backpos = false; //false is in, true is out
+bool frontpos = false;
 bool isMoving = true;
 bool kickerToggle = true;
 const double targetAngle = 19870;
@@ -33,15 +34,15 @@ bool movement = false;
 void intaker() {
     //outtake
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) {
-        intake.move_velocity(-400);
+        intake.move_velocity(300);
     }
     //ramp up intake speed
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
         intake.move_velocity(600);
     }
     //intake
     else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-        intake.move_velocity(400);
+        intake.move_velocity(-300);
     }
     else {
         intake.move_velocity(0);
@@ -70,7 +71,7 @@ void catawow() {
 
 void updateCatapult() {
     
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+    while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
             if (!movement) {
                 cata.move_voltage(spinVoltage);
             }
@@ -79,84 +80,13 @@ void updateCatapult() {
             }
             movement = !movement;
     }
-    
-    // put cata all the way down so we can intake into it
-    /* if (allthewaydown) {
-        if(kickerRotation.get_angle() < targetAngle && kickerRotation.get_angle() > targetAngle-5) {
-            cata.move_voltage(0);
-            pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
-            pros::lcd::print(0, "Stopped loading"); // Debugging
-        }    
-        else {
-            cata.move_voltage(spinVoltage);
-            pros::lcd::print(0, "Loading..."); // Debugging
-        }
-    }
-    // haflway point down the cata, stops intaking and holds position
-    else {
-        if(kickerRotation.get_angle() < targAngle2 && kickerRotation.get_angle() > targAngle2-5) {
-            cata.move_voltage(0);
-            pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
-            pros::lcd::print(0, "Stopped loading"); // Debugging
-        }    
-        else {
-            cata.move_voltage(spinVoltage);
-            pros::lcd::print(0, "Loading..."); // Debugging
-            
-        }
-    }
 
-    
-    if (allthewaydown) {
-        if(kickerRotation.get_angle() > targetAngle || kickerRotation.get_angle() < targetAngle-15) {
-            cata.move_voltage(spinVoltage);
-            pros::lcd::print(0, "Loading..."); // Debugging
-        }    
-        else {
-            cata.move_voltage(0);
-            pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
-            pros::lcd::print(0, "Stopped loading"); // Debugging
-        }
-    }
-    // haflway point down the cata, stops intaking and holds position
-    else {
-        if(kickerRotation.get_angle() > targAngle2 || kickerRotation.get_angle() < targAngle2-15) {
-            cata.move_voltage(spinVoltage);
-            pros::lcd::print(0, "Loading..."); // Debugging
-        }    
-        else {
-            cata.move_voltage(0);
-            pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
-            pros::lcd::print(0, "Stopped loading"); // Debugging
-        }
-    }
-    */
-   /*
-    if (allthewaydown) {
-        if(kickerRotation.get_angle() > targetAngle) {
-            cata.move_voltage(spinVoltage);
-            pros::lcd::print(0, "Loading..."); // Debugging
-        }    
-        else {
-            cata.move_voltage(0);
-            pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
-            pros::lcd::print(0, "Stopped loading"); // Debugging
-        }
-    }
-    // haflway point down the cata, stops intaking and holds position
-    else {
-        if(kickerRotation.get_angle() > targAngle2) {
-            cata.move_voltage(spinVoltage);
-            pros::lcd::print(0, "Loading..."); // Debugging
-        }    
-        else {
-            cata.move_voltage(0);
-            pros::lcd::print(3, "Kicker Angle: %f", kickerRotation.get_angle());
-            pros::lcd::print(0, "Stopped loading"); // Debugging
-        }
-    }   
-    */
+}
 
+void setPosition() {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
+        cata.move_absolute(180, 300);
+    }
 }
 
 
@@ -205,26 +135,27 @@ void move_the_intake() {
 }
 */
 
-void move_wings() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
-        wings.set_value(!wingspos);
-        wingspos = !wingspos;
+void move_front_wings() {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
+        fwings.set_value(!frontpos);
+        frontpos = !frontpos;
         pros::delay(300);
     }
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-        wings.set_value(!wingspos);
-        wingspos = !wingspos;
+}
+
+void move_back_wings() {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
+        bwings.set_value(!backpos);
+        backpos = !backpos;
         pros::delay(300);
     }
 }
 
 void move_elevation() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)) {
-        elev.set_value(true);
-    }
-
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_B)) {
-        elev.set_value(false);
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
+        elev.set_value(!elevpos);
+        elevpos = !elevpos;
+        pros::delay(350);
     }
 }
 

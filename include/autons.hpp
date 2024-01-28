@@ -12,3 +12,4 @@ void simple_d_awp();
 void defensive_elim();
 void new_offensive();
 void offensive_six();
+void offensive();

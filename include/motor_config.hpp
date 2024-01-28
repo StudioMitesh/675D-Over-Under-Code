@@ -20,7 +20,8 @@ extern pros::Motor intake;
 extern pros::Motor cata;
 
 extern pros::ADIDigitalOut moveintake;
-extern pros::ADIDigitalOut wings;
+extern pros::ADIDigitalOut bwings;
+extern pros::ADIDigitalOut fwings;
 extern pros::ADIDigitalOut elev;
 
 extern pros::ADIDigitalIn limitSwitch;

@@ -97,7 +97,8 @@ void competition_initialize() {}
  */
 void autonomous() {
 	//offensive autons
-	offensive_six();
+	offensive();
+	//offensive_six();
 	//new_offensive();
 
 	//defensive autons
@@ -106,6 +107,7 @@ void autonomous() {
 
 	//skills auton
 	//skills_auton();
+	//new_skills();
 }
 
 /**
@@ -131,8 +133,10 @@ void opcontrol() {
 	while(true) {
 		intaker();
 		updateCatapult();
-		move_wings();
+		move_front_wings();
+		move_back_wings();
 		move_elevation();
+		setPosition();
 	}
 		//Task cataTask(catapult);
 	

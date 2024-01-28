@@ -19,6 +19,128 @@ void testPath(){
 */
 
 
+void offensive() {
+    chassis.setPose(0,0,0);
+    cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+    releaseIntake();
+    pros::delay(200);
+
+    intakes();
+    pros::delay(150);
+
+    chassis.moveToPoint(0, -40, 750, false, 100);
+    chassis.turnTo(-25, 0, 750);
+    pros::delay(150);
+    backwings(true);
+    pros::delay(150);
+    chassis.moveToPoint(13, -58, 500, false, 100);
+    chassis.turnTo(-13, -62, 750);
+    pros::delay(150);
+    pros::delay(150);
+    chassis.moveToPoint(54, -76, 850, false, 120);
+    pros::delay(100);
+    backwings(false);
+    pros::delay(500);
+
+    chassis.setPose(0,0,0);
+    chassis.moveToPoint(4, -13, 1500);
+    outtake();
+    pros::delay(250);
+    chassis.moveToPoint(0, 0, 1500); 
+    chassis.moveToPoint(4, 13, 1000);
+    chassis.turnTo(28, 9, 1500);
+    //chassis.turnTo(27.75, 9, 1500);
+    pros::delay(500);
+
+    chassis.setPose(0,0,0);
+    chassis.moveToPoint(0, 40,1500);
+    chassis.turnTo(25, 22, 1500);
+    pros::delay(250);
+    outtake();
+    chassis.turnTo(-6, 65, 1500);
+    pros::delay(250);
+    chassis.moveToPoint(-6, 65, 1500);
+    intakes();
+    chassis.turnTo(25, 22, 1500);
+    pros::delay(250);
+    outtake();
+    pros::delay(200);
+    chassis.turnTo(8, 98, 1500);
+    pros::delay(300);
+
+    chassis.setPose(0,0,0);
+    chassis.moveToPoint(0, 15, 1500);
+    intakes();
+    chassis.moveToPoint(0, 18, 1500);
+    chassis.turnTo(10, 13, 1500);
+    pros::delay(500);
+    chassis.setPose(0,0,0);
+    autowings(true);
+    chassis.moveToPoint(0, 50, 1500);
+    outtake();
+    chassis.moveToPoint(0, 70, 1500);
+    chassis.moveToPoint(0, 50, 1500, false);
+}
+
+
+// ACTUAL DEFENSIVE AUTON WIN POINT
+void simple_d_awp() {
+
+    chassis.setPose(0,0,0);
+    chassis.moveToPoint(0, -40, 1000, false, 100);
+    pros::delay(500);
+    chassis.moveToPoint(0, -10, 1000, true, 100);
+    pros::delay(500);
+    chassis.moveToPoint(0, -40, 1000, false, 100);
+    chassis.moveToPoint(7, -12, 1000, true, 100);
+    chassis.turnTo(1, 0, 1000);
+    pros::delay(3000);
+
+    backwings(true);
+    chassis.moveToPoint(-2, 3, 1000, true, 100);
+    pros::delay(500);
+    backwings(false);
+    chassis.turnTo(-4, 6, 1000);
+
+    chassis.setPose(0,0,0);
+    releaseIntake();
+    outtake();
+    chassis.moveToPoint(0, 50, 1000);
+    
+    //chassis.moveToPoint(150, 0, 1000, true, 100);
+    //pros::delay(500);
+    
+    //chassis.moveToPoint(0, -37, 1000, 200);
+    //chassis.moveToPoint(-2, -25, 1000, 125);
+    //pros::delay(500);
+    /*chassis.setPose(0,0,0);
+    chassis.moveToPoint(8, 18, 1250, 90);
+    chassis.turnTo(8.5, 24, 1000, false, 100);
+    //chassis.moveToPoint(8, 20, 1000, 100);
+    chassis.setPose(0,0,0);
+    chassis.turnTo(-2, 5, 1000);
+    pros::delay(500);
+    autowings(true);
+    pros::delay(1250);
+    chassis.setPose(0,0,0);
+    chassis.moveToPoint(-1, 15, 1000, 100);
+    chassis.turnTo(-9, 23, 1000);
+    pros::delay(600);
+    autowings(false);
+    pros::delay(750);
+    chassis.setPose(0,0,0);
+    chassis.moveToPoint(-2, 25, 1500, 125);
+    releaseIntake();
+    outtake();
+    chassis.moveToPoint(-2.5, 32, 1000, 90);
+    outtake();*/
+}
+
+
+
+
+
+
 // THE ACTUAL SIX TRIBALL AUTON FR
 void offensive_six() {
     //set everything up
@@ -31,7 +153,7 @@ void offensive_six() {
     intakes();
     
     //move backward
-    chassis.moveToPoint(0, -40, 750, 90);
+    chassis.moveToPoint(0, -40, 750, false, 90);
 
     pros::delay(250);
     
@@ -44,7 +166,7 @@ void offensive_six() {
 
     chassis.setPose(0,0,0);
 
-    chassis.moveToPoint(0, -35, 750, 90);
+    chassis.moveToPoint(0, -35, 750, false, 90);
 
     //pros::delay(500);
 
@@ -52,34 +174,34 @@ void offensive_six() {
 
     chassis.setPose(0,0,0);
 
-    chassis.turnTo(-7, 0, 750, false, 100); // false (default), 100 speed (half)
+    chassis.turnTo(-7, 0, 750, true, 100); // false (default), 100 speed (half)
 
     chassis.setPose(0,0,0);
 
-    chassis.moveToPoint(0, -30, 750, 195);
+    chassis.moveToPoint(0, -30, 750, false, 195);
 
     //pros::delay(200);
 
     chassis.setPose(0,0,0);
 
-    chassis.moveToPoint(0, 15, 750, 100);
+    chassis.moveToPoint(0, 15, 750, true, 100);
 
-    chassis.turnTo(10, 15*3.14, 750, 150);
+    chassis.turnTo(10, 15*3.14, 750, true, 150);
 
-    outtake(250);
+    outtake();
 
     chassis.setPose(0,0,0);
 
-    chassis.moveToPoint(2, 25, 350, 190);
+    chassis.moveToPoint(2, 25, 350, true, 190);
        
-    chassis.moveToPoint(0, -15, 500, 150);
+    chassis.moveToPoint(0, -15, 500, false, 150);
 
     chassis.turnTo(-19, 0, 500);
 
     chassis.setPose(0,0,0);
 
     // now get ready to go towards mmiddle of field!
-    chassis.moveToPoint(7, 70, 1250, 150);
+    chassis.moveToPoint(7, 70, 1250, true, 150);
 
     intakes();
 
@@ -91,13 +213,13 @@ void offensive_six() {
 
     chassis.setPose(0,0,0);
     
-    chassis.moveToPoint(1, 75, 750, 190);
+    chassis.moveToPoint(1, 75, 750, true, 190);
 
     chassis.moveToPoint(0, 57.5, 500);
 
     chassis.turnTo(40, 1, 500);
     
-    chassis.moveToPoint(40, 1, 500, 190);
+    chassis.moveToPoint(40, 1, 500, true, 190);
 
     intakes();
 
@@ -105,7 +227,7 @@ void offensive_six() {
     
     chassis.turnTo(0, 75, 300);
 
-    chassis.moveToPoint(1.5, 90, 500, 190);
+    chassis.moveToPoint(1.5, 90, 500, true, 190);
 
     /*
     chassis.setPose(0,0,0);
@@ -141,7 +263,7 @@ void offensive_six() {
     chassis.setPose(0, 0, 0);
 
     //outakes
-    outtake(250);
+    outtake();
 
     // move forward and push into goal
     chassis.moveToPoint(5, 35, 1000, 195);
@@ -181,7 +303,7 @@ void offensive_six() {
     chassis.setPose(0,0,0);
     chassis.moveToPoint(0, 75, 1250, 180);
     //outtake the triball
-    outtake(200);
+    outtake();
     chassis.moveToPoint(0, 100, 500, 190);
     //back off the goal
     chassis.moveToPoint(0, 80, 750, 175);
@@ -196,7 +318,7 @@ void offensive_six() {
     //turn to the goal
     chassis.turnTo(0, 100, 750);
     //push the last triball in
-    outtake(250);
+    outtake();
     chassis.moveToPoint(0, 100, 500, 180);
     //back off
     chassis.moveToPoint(0, 75, 750, 125);
@@ -215,7 +337,7 @@ void new_offensive() {
     chassis.moveToPoint(0, 50, 1250, 135);
     chassis.setPose(0,0,0);
     chassis.turnTo(15, 8, 1000);
-    outtake(350); 
+    outtake(); 
     chassis.setPose(0,0,0);
     chassis.turnTo(0, -15, 1000);
     pros::delay(500);
@@ -234,7 +356,7 @@ void new_offensive() {
     chassis.moveToPoint(-2, -25, 1000, 125);
     autowings(false);
     chassis.turnTo(-2, -40, 1000);
-    outtake(300);
+    outtake();
     chassis.moveToPoint(-2, -40, 1000, 150);
     chassis.moveToPoint(-2, -25, 1000);
     chassis.turnTo(-15, 0, 1000);
@@ -242,7 +364,7 @@ void new_offensive() {
     intakes();
     chassis.moveToPoint(-2.5, -10, 1000, 120);
     chassis.turnTo(-2.5, -40, 1000);
-    outtake(300);
+    outtake();
     chassis.moveToPoint(-2.5, -40, 1000, 150);
     chassis.moveToPoint(-2.5, -30, 1000);
 
@@ -271,7 +393,7 @@ void offensive_middle() {
     chassis.setPose(0,0,0);
     //Outtake the triball
     pros::delay(500);
-    outtake(350);
+    outtake();
     pros::delay(500);
     //Push them into the goal
     chassis.moveToPoint(-3, 25, 1000, 120);
@@ -293,40 +415,11 @@ void offensive_middle() {
     //Move slightly to goal
     chassis.moveToPoint(-3.5, 5, 1000, 140);
     //Outtake the tri
-    outtake(300);
+    outtake();
     //Push it into the triball
     chassis.moveToPoint(-4, 25, 1000, 150);
 }
 
-
-// ACTUAL DEFENSIVE AUTON WIN POINT
-void simple_d_awp() {
-    chassis.setPose(0,0,0);
-    chassis.moveToPoint(0, -37, 1000, 200);
-    chassis.moveToPoint(-2, -25, 1000, 125);
-    pros::delay(500);
-    chassis.setPose(0,0,0);
-    chassis.moveToPoint(8, 18, 1250, 90);
-    chassis.turnTo(8.5, 24, 1000, false, 100);
-    //chassis.moveToPoint(8, 20, 1000, 100);
-    chassis.setPose(0,0,0);
-    chassis.turnTo(-2, 5, 1000);
-    pros::delay(500);
-    autowings(true);
-    pros::delay(1250);
-    chassis.setPose(0,0,0);
-    chassis.moveToPoint(-1, 15, 1000, 100);
-    chassis.turnTo(-9, 23, 1000);
-    pros::delay(600);
-    autowings(false);
-    pros::delay(750);
-    chassis.setPose(0,0,0);
-    chassis.moveToPoint(-2, 25, 1500, 125);
-    releaseIntake();
-    outtake(300);
-    chassis.moveToPoint(-2.5, 32, 1000, 90);
-    outtake(500);
-}
 
 
 void defensive_awp(){
@@ -377,7 +470,7 @@ void defensive_awp(){
     //Push triballs over the line
     chassis.moveToPoint(-3, 25.5, 1200, 125);
     //Outtake the triball
-    outtake(300);
+    outtake();
     //Turn and touch bar
     chassis.turnTo(-5, 27.5, 1200);
     //Move a lil bit
@@ -407,7 +500,7 @@ void defensive_elim() {
     //Go up to the bar
     chassis.moveToPoint(50, 30, 1000, 100);
     //Outtake and push it over the line
-    outtake(300);
+    outtake();
     //Push
     chassis.moveToPoint(55, 30, 500, 125);
     //Back up a tad
@@ -425,7 +518,7 @@ void defensive_elim() {
     //Go up to the bar part 2
     chassis.moveToPoint(50, 30, 1000, 100);
     //Outtake and push it over the line part 2
-    outtake(300);
+    outtake();
     //Push part 2
     chassis.moveToPoint(55, 30, 500, 125);
     //Back up a tad part 2

@@ -7,25 +7,29 @@ int start = 0;
 // intaker
 void intakes() {
     pros::delay(100);
-    intake.move_relative(1080, 600);
+    intake.move_relative(-1440, 450);
     pros::delay(100);
 }
 
 // outaker
-void outtake(int t) {
-  intake.move_velocity(-600);
-  pros::delay(t);
-  intake.move_velocity(0);
+void outtake() {
+    pros::delay(50);
+    intake.move_relative(1440, 600);
+    pros::delay(50);
 }
 
 //auto wings out
 void autowings(bool set) {
-    wings.set_value(set);
+    fwings.set_value(set);
+}
+
+void backwings(bool set) {
+    bwings.set_value(set);
 }
 
 //spins the cata to release the intake down
 void releaseIntake() {
-    cata.move_relative(400, 100);
+    cata.move_relative(340, 100);
 }
 
 //constant fire the cata for set time at set voltage
@@ -37,7 +41,7 @@ void autoCata(double spinny, double t) {
 
 //open the elevation w the piston
 void hangtime() {
-    elev.set_value(true);
+    elev.set_value(false);
 }
 
 /*
