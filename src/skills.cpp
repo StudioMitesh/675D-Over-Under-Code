@@ -9,18 +9,22 @@ void new_skills() {
     pros::delay(500);
     backwings(true);
     chassis.turnTo(-24, 15, 1000);
-    releaseIntake();
-    autoCata(10000, 45000);
+    //releaseIntake();
+    autoCata(10000, 2000);
     backwings(false);
-    chassis.turnTo(0, -15, 1000);
-    pros::delay(100);
-    chassis.moveToPoint(-20, -15, 1000, false, 100);
-    chassis.moveToPoint(-1, 10, 1000, true, 100);
-    pros::delay(100);
-    chassis.moveToPoint(-3, 70, 1000);
-    
-    chassis.setPose(0,0,0);
     chassis.turnTo(0, -10, 1000);
+    pros::delay(100);
+    chassis.moveToPoint(-40, -20, 1000, false, 100);
+    chassis.moveToPoint(-4, 8, 1000, true, 100);
+    pros::delay(100);
+    chassis.turnTo(-3, 70, 1000);
+    chassis.moveToPoint(-6, 70, 1000);
+    pros::delay(500);
+
+    chassis.moveToPoint(-5, 100, 1000);
+    pros::delay(5000);
+    chassis.setPose(0,0,0);
+    chassis.turnTo(7, -10, 1000);
     chassis.moveToPoint(-15, 25, 1000, false, 110);
     chassis.moveToPoint(-30, 25, 1000, false, 110);
     chassis.moveToPoint(-15, 25, 1000, true, 110);

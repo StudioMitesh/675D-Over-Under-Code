@@ -97,7 +97,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 	//offensive autons
-	offensive();
+	//offensive();
 	//offensive_six();
 	//new_offensive();
 
@@ -107,7 +107,7 @@ void autonomous() {
 
 	//skills auton
 	//skills_auton();
-	//new_skills();
+	new_skills();
 }
 
 /**
