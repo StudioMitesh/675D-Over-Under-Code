@@ -18,7 +18,41 @@ void testPath(){
 }
 */
 
+void valorsCloseShitHeWanted() { // krish started this
+    chassis.setPose(0,0,0);
+    cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+    //releaseIntake();
+    //pros::delay(200);
 
+    autowings(true);
+    pros::delay(200);
+    autowings(false);
+
+    chassis.moveToPose(0, 59, 0, 1750);
+
+    pros::delay(750);
+
+    intake.move_velocity(-600);
+
+    pros::delay(750);
+
+    intake.move_velocity(0);
+
+    pros::delay(200);
+
+
+    chassis.moveToPose(0, 0, 0, 750);
+    
+    chassis.setPose(0,0,0);
+
+    chassis.moveToPose(0, -59, 0, 2000);
+
+    chassis.turnTo(-90, 0, 1000);
+
+   pros::delay(1000);
+    
+   chassis.moveToPose(0, -35, 0, 750);
+}
 void offensive() {
     chassis.setPose(0,0,0);
     cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);

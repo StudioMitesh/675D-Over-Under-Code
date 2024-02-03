@@ -25,8 +25,3 @@ ADIDigitalOut bwings('A');
 ADIDigitalOut elev('B');
 ADIDigitalOut fwings('C');
 //pros::ADIDigitalIn limitSwitch('C');
-
-
-
-
-

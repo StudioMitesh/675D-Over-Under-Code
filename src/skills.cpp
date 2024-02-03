@@ -32,6 +32,56 @@ void new_skills() {
     chassis.moveToPoint(-15, 25, 1000, true, 110);
     chassis.turnTo(-10, 0, 1000);
 
+    chassis.moveToPoint(-22,-12, 1500, false);
+
+    backwings(true);
+
+    chassis.turnTo(22, 0, 500);
+
+    chassis.moveToPoint(0, 20, 500);
+
+    //chassis.turnTo(17, 0, 750, false);
+
+    //chassis.moveToPoint(-15, -15, 600);
+
+
+
+    
+
+    
+
+    /*
+    chassis.setPose(0, 0, 0);
+    chassis.moveToPoint(-15, -15, 1000, false, 100);
+    pros::delay(500);
+    chassis.turnTo(-17, 15, 1000);
+    pros::delay(500);
+    backwings(true);
+    chassis.turnTo(-24, 15, 1000);
+    releaseIntake();
+    autoCata(10000, 5000); // originally 45000
+    backwings(false);
+    chassis.turnTo(0, -15, 1000);
+    pros::delay(100);
+    chassis.moveToPoint(-20, -15, 1000, false, 100);
+    chassis.moveToPoint(-1, 10, 1000, true, 100);
+    pros::delay(100);
+    chassis.moveToPoint(-7, 97, 1700);
+    // start turing now at diagonal towards side of the goal
+    chassis.turnTo(100,0,500);  
+
+    pros::delay(500);
+
+    chassis.setPose(0,0,0);
+
+    chassis.moveToPoint(0, 15, 500, false);
+
+    chassis.setPose(0,0,0);
+
+    chassis.moveToPose(0, 25, 0, 750);
+
+    */
+
 }
 
 
