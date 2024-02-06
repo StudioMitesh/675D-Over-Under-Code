@@ -6,8 +6,8 @@ int start = 0;
 
 // intaker
 void intakes() {
-    pros::delay(100);
-    intake.move_relative(-1440, 450);
+    pros::delay(175);
+    intake.move_relative(-1800, 450);
     pros::delay(100);
 }
 

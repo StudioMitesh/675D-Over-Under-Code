@@ -18,7 +18,7 @@ Motor_Group leftMotors({leftFront, leftMid, leftBack});
 Motor_Group rightMotors({rightFront, rightMid, rightBack});
 
 Motor intake(1, MOTOR_GEARSET_06, false, MOTOR_ENCODER_DEGREES);
-Motor cata(2, MOTOR_GEARSET_36, false, MOTOR_ENCODER_DEGREES);
+Motor cata(9, MOTOR_GEARSET_36, false, MOTOR_ENCODER_DEGREES);
 
 //pros::ADIDigitalOut moveintake('B');
 ADIDigitalOut bwings('A');

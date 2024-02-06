@@ -53,6 +53,44 @@ void valorsCloseShitHeWanted() { // krish started this
     
    chassis.moveToPose(0, -35, 0, 750);
 }
+
+
+void true_offensive() {
+    chassis.setPose(0,0,0);
+    cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
+    releaseIntake();
+
+    chassis.moveToPoint(0, 71.5, 3000);
+    pros::delay(450);
+    intakes();
+    pros::delay(1000);
+    //autowings(true);
+    //backwings(true);
+    pros::delay(15);
+    chassis.moveToPoint(7, 2, 1000, false);
+    //autowings(false);
+    //backwings(false);
+
+    chassis.turnTo(17, 21, 1000);
+    pros::delay(100);
+    outtake();
+    pros::delay(250);
+    chassis.moveToPoint(-5, 6, 1000);
+    chassis.moveToPoint(-38, 24, 2500);
+    pros::delay(400);
+    intakes();
+    pros::delay(200);
+
+    chassis.moveToPoint(0, 4, 1000, false);
+    backwings(true);
+    chassis.moveToPoint(7, 6, 1000, false);
+    chassis.moveToPoint(26, 20, 1000, false);
+    backwings(false);
+}
+
+
+
+
 void offensive() {
     chassis.setPose(0,0,0);
     cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
