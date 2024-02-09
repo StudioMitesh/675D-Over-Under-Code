@@ -23,6 +23,9 @@ extern pros::ADIDigitalOut moveintake;
 extern pros::ADIDigitalOut bwings;
 extern pros::ADIDigitalOut fwings;
 extern pros::ADIDigitalOut elev;
+extern pros::ADIDigitalOut leftwing;
+extern pros::ADIDigitalOut rightwing;
+
 
 extern pros::ADIDigitalIn limitSwitch;
 

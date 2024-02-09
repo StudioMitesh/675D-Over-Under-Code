@@ -55,13 +55,16 @@ void valorsCloseShitHeWanted() { // krish started this
 }
 
 
-void true_offensive() {
+void elims_offensive() {
     chassis.setPose(0,0,0);
     cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     releaseIntake();
+    rightwings(true);
+    pros::delay(200);
+    rightwings(false);
 
     chassis.moveToPoint(0, 71.5, 3000);
-    pros::delay(450);
+    pros::delay(500);
     intakes();
     pros::delay(1000);
     //autowings(true);
@@ -76,16 +79,33 @@ void true_offensive() {
     outtake();
     pros::delay(250);
     chassis.moveToPoint(-5, 6, 1000);
-    chassis.moveToPoint(-38, 24, 2500);
+    chassis.moveToPoint(-39, 25, 2500);
     pros::delay(400);
     intakes();
     pros::delay(200);
 
-    chassis.moveToPoint(0, 4, 1000, false);
+    chassis.moveToPoint(4, 6, 1000, false);
+    pros::delay(250);
     backwings(true);
-    chassis.moveToPoint(7, 6, 1000, false);
-    chassis.moveToPoint(26, 20, 1000, false);
+    pros::delay(200);
+    chassis.moveToPoint(20, 10, 1000, false, 120);
+    chassis.moveToPoint(28, 14, 1500, false, 120);
     backwings(false);
+    chassis.turnTo(3, -9, 1000);
+
+    chassis.setPose(0,0,0);
+    pros::delay(50);
+    chassis.moveToPoint(0, -25, 1000, false);
+    chassis.moveToPoint(0, 13, 1000);
+    chassis.moveToPoint(0, -25, 1000, false);
+    chassis.moveToPoint(0, 13, 1000);
+    chassis.moveToPoint(0, 0, 1000);
+    pros::delay(150);
+    outtake();
+    chassis.moveToPoint(0, -25, 1000);
+    chassis.moveToPoint(0, 10, 1000, false);
+    chassis.moveToPoint(40, -1, 1000);
+    intakes();
 }
 
 

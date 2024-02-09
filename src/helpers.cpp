@@ -11,6 +11,14 @@ void intakes() {
     pros::delay(100);
 }
 
+void startouttake() {
+    intake.move_velocity(500);
+}
+
+void stopouttake() {
+    intake.move_velocity(0);
+}
+
 // outaker
 void outtake() {
     pros::delay(50);
@@ -18,9 +26,18 @@ void outtake() {
     pros::delay(50);
 }
 
-//auto wings out
-void autowings(bool set) {
-    fwings.set_value(set);
+//left wings out
+void leftwings(bool set) {
+    leftwing.set_value(set);
+}
+
+void rightwings(bool set) {
+    rightwing.set_value(set);
+}
+
+void bothfrontwings(bool set) {
+    leftwing.set_value(set);
+    rightwing.set_value(set);
 }
 
 void backwings(bool set) {
@@ -40,10 +57,10 @@ void autoCata(double spinny, double t) {
 }
 
 //open the elevation w the piston
-void hangtime() {
+/*void hangtime() {
     elev.set_value(false);
 }
-
+*/
 /*
 // load the kicker in position to fire
 void load()

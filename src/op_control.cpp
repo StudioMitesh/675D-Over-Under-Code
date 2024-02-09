@@ -5,8 +5,8 @@ CONTROLLER OVERVIEW::
 Drive type: arcade
 L1: Outtake
 L2: Intake
-R1: Slapper
-R2: Front wings
+R1: Left wings
+R2: Right wings
 
 X: 
 A: 
@@ -14,14 +14,15 @@ B: Catapult to pos
 Y: Back wings
 
 Up: 
-Right: Elevation
+Right: Slapper
 Down: Outtake full speed
 Left: 
 */
 
 bool elevpos = true;
 bool backpos = false; //false is in, true is out
-bool frontpos = false;
+bool leftpos = false;
+bool rightpos = false;
 bool isMoving = true;
 bool kickerToggle = true;
 const double targetAngle = 19870;
@@ -37,7 +38,7 @@ void intaker() {
         intake.move_velocity(300);
     }
     //ramp up intake speed
-    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+    else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT)) {
         intake.move_velocity(600);
     }
     //intake
@@ -71,7 +72,7 @@ void catawow() {
 
 void updateCatapult() {
     
-    while (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+    while (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
             if (!movement) {
                 cata.move_voltage(spinVoltage);
             }
@@ -136,9 +137,14 @@ void move_the_intake() {
 */
 
 void move_front_wings() {
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
+        leftwing.set_value(!leftpos);
+        leftpos = !leftpos;
+        pros::delay(300);
+    }
     if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-        fwings.set_value(!frontpos);
-        frontpos = !frontpos;
+        rightwing.set_value(!rightpos);
+        rightpos = !rightpos;
         pros::delay(300);
     }
 }

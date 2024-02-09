@@ -3,13 +3,13 @@
 
 void new_skills() {
     chassis.setPose(0, 0, 0);
+    //releaseIntake();
     chassis.moveToPoint(-15, -15, 1000, false, 100);
     pros::delay(500);
     chassis.turnTo(-17, 15, 1000);
     pros::delay(500);
     backwings(true);
     chassis.turnTo(-24, 15, 1000);
-    //releaseIntake();
     autoCata(10000, 2000);
     backwings(false);
     chassis.turnTo(0, -10, 1000);
@@ -21,66 +21,53 @@ void new_skills() {
     chassis.moveToPoint(-6, 70, 1000);
     pros::delay(500);
 
-    chassis.moveToPoint(-5, 100, 1000);
-    pros::delay(5000);
-    chassis.setPose(0,0,0);
-    chassis.turnTo(7, -10, 1000);
-    chassis.moveToPoint(-15, 25, 1000, false, 110);
-    chassis.moveToPoint(-30, 25, 1000, false, 110);
-    chassis.moveToPoint(-15, 25, 1000, true, 110);
-    chassis.moveToPoint(-30, 25, 1000, false, 110);
-    chassis.moveToPoint(-15, 25, 1000, true, 110);
-    chassis.turnTo(-10, 0, 1000);
+    chassis.moveToPoint(-5, 90, 2500);
+    pros::delay(1000);
+    
+    leftwings(true);
+    chassis.moveToPoint(-10, 105, 1500);
+    chassis.moveToPoint(-17, 120, 1500);
+    leftwings(false);
+    startouttake();   
+    chassis.turnTo(-35, 122, 1500);
+    chassis.moveToPoint(-45, 122, 1000);
+    chassis.moveToPoint(-17, 122, 1000, false);
+    chassis.moveToPoint(-45, 122, 1000);
+    chassis.moveToPoint(-27, 105, 1000, false);
+    pros::delay(500);
+    stopouttake();  
 
-    chassis.moveToPoint(-22,-12, 1500, false);
+    /*chassis.moveToPoint(-10, 115, 1500);
+    chassis.moveToPoint(-25, 125, 1500, false);
+    chassis.moveToPoint(-5, 135, 1500, true);
+    chassis.moveToPoint(-25, 125, 1500, false);
+    chassis.moveToPoint(-20, 110, 1500, true);
+*/
+    chassis.turnTo(0, 130, 1500);
+    chassis.moveToPoint(-60, 70,2000, false);
+    chassis.turnTo(0, 0, 2000, false);
+    pros::delay(500);
 
-    backwings(true);
-
-    chassis.turnTo(22, 0, 500);
-
-    chassis.moveToPoint(0, 20, 500);
-
-    //chassis.turnTo(17, 0, 750, false);
-
-    //chassis.moveToPoint(-15, -15, 600);
+    bothfrontwings(true);
+    chassis.moveToPoint(-70, 110, 1500);
+    chassis.moveToPoint(-60, 70, 1000, false);
+    chassis.moveToPoint(-70, 110, 1500);
+    chassis.moveToPoint(-60, 75, 1000, false);
+    bothfrontwings(false);
 
 
-
+    chassis.turnTo(-90, 70, 1000);
+    chassis.moveToPoint(-90, 70, 1000);
+    chassis.turnTo(-90, 110, 1000);
+    bothfrontwings(true);
+    chassis.moveToPoint(-90, 110, 1000);
+    chassis.moveToPoint(-90, 80, 1000, false);
+    chassis.moveToPoint(-90, 110, 1000);
+    chassis.moveToPoint(-90, 80, 1000, false);
+    bothfrontwings(false);
+    
     
 
-    
-
-    /*
-    chassis.setPose(0, 0, 0);
-    chassis.moveToPoint(-15, -15, 1000, false, 100);
-    pros::delay(500);
-    chassis.turnTo(-17, 15, 1000);
-    pros::delay(500);
-    backwings(true);
-    chassis.turnTo(-24, 15, 1000);
-    releaseIntake();
-    autoCata(10000, 5000); // originally 45000
-    backwings(false);
-    chassis.turnTo(0, -15, 1000);
-    pros::delay(100);
-    chassis.moveToPoint(-20, -15, 1000, false, 100);
-    chassis.moveToPoint(-1, 10, 1000, true, 100);
-    pros::delay(100);
-    chassis.moveToPoint(-7, 97, 1700);
-    // start turing now at diagonal towards side of the goal
-    chassis.turnTo(100,0,500);  
-
-    pros::delay(500);
-
-    chassis.setPose(0,0,0);
-
-    chassis.moveToPoint(0, 15, 500, false);
-
-    chassis.setPose(0,0,0);
-
-    chassis.moveToPose(0, 25, 0, 750);
-
-    */
 
 }
 

@@ -4,7 +4,8 @@
 
 //extern Drive chassis;
 
-void true_offensive();
+void valorsCloseShitHeWanted();
+void elims_offensive();
 void offensive_middle();
 void defensive_awp();
 void single_tri_off();

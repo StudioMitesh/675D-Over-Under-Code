@@ -97,7 +97,7 @@ void competition_initialize() {}
  */
 void autonomous() {
 	//offensive autons
-	true_offensive();
+	elims_offensive();
 	//offensive();
 	//offensive_six();
 	//new_offensive();
