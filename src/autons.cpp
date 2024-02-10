@@ -66,46 +66,36 @@ void elims_offensive() {
     chassis.moveToPoint(0, 71.5, 3000);
     pros::delay(500);
     intakes();
-    pros::delay(1000);
-    //autowings(true);
-    //backwings(true);
-    pros::delay(15);
+    pros::delay(300);
+    bothfrontwings(true);
     chassis.moveToPoint(7, 2, 1000, false);
-    //autowings(false);
-    //backwings(false);
+    bothfrontwings(false);
 
     chassis.turnTo(17, 21, 1000);
     pros::delay(100);
     outtake();
-    pros::delay(250);
+    pros::delay(50);
     chassis.moveToPoint(-5, 6, 1000);
-    chassis.moveToPoint(-39, 25, 2500);
+    chassis.moveToPoint(-40.5, 25.5, 2500);
     pros::delay(400);
     intakes();
-    pros::delay(200);
 
     chassis.moveToPoint(4, 6, 1000, false);
-    pros::delay(250);
     backwings(true);
-    pros::delay(200);
-    chassis.moveToPoint(20, 10, 1000, false, 120);
-    chassis.moveToPoint(28, 14, 1500, false, 120);
+    chassis.moveToPoint(20, 10, 1000, false);
+    chassis.moveToPoint(31, 14, 1000, false);
     backwings(false);
-    chassis.turnTo(3, -9, 1000);
+    pros::delay(500);
 
     chassis.setPose(0,0,0);
-    pros::delay(50);
-    chassis.moveToPoint(0, -25, 1000, false);
-    chassis.moveToPoint(0, 13, 1000);
-    chassis.moveToPoint(0, -25, 1000, false);
-    chassis.moveToPoint(0, 13, 1000);
-    chassis.moveToPoint(0, 0, 1000);
+    chassis.moveToPoint(-5, -20, 1000, false);
+    chassis.moveToPoint(0, 18, 1000);
+    chassis.turnTo(-5, -25, 500);
     pros::delay(150);
     outtake();
-    chassis.moveToPoint(0, -25, 1000);
-    chassis.moveToPoint(0, 10, 1000, false);
-    chassis.moveToPoint(40, -1, 1000);
-    intakes();
+    pros::delay(50);
+    chassis.moveToPoint(-5, -25, 1000);
+    chassis.moveToPoint(0, 20, 1000, false);
 }
 
 
@@ -167,7 +157,7 @@ void offensive() {
     chassis.turnTo(10, 13, 1500);
     pros::delay(500);
     chassis.setPose(0,0,0);
-    autowings(true);
+    bothfrontwings(true);
     chassis.moveToPoint(0, 50, 1500);
     outtake();
     chassis.moveToPoint(0, 70, 1500);
@@ -175,7 +165,22 @@ void offensive() {
 }
 
 
-// ACTUAL DEFENSIVE AUTON WIN POINT
+void defensive_awp() {
+    chassis.setPose(0,0,0);
+    chassis.moveToPoint(0, -20, 1000, false);
+    chassis.moveToPoint(-22, -37, 1000, false);
+    releaseIntake();
+    pros::delay(150);
+    chassis.moveToPoint(-2, 1, 1000);
+    backwings(true);
+    chassis.turnTo(-10, 10, 1000);
+    chassis.moveToPoint(-16, 16.5, 1000);
+    backwings(false);
+    chassis.moveToPoint(-29, 30, 1000);
+}
+
+
+
 void simple_d_awp() {
 
     chassis.setPose(0,0,0);
@@ -514,7 +519,7 @@ void offensive_middle() {
 
 
 
-void defensive_awp(){
+void defensive_fakeawp(){
     chassis.setPose(0, 0, 15);
     //Unlock intake
     releaseIntake();

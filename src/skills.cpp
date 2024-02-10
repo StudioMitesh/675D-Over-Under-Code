@@ -3,16 +3,19 @@
 
 void new_skills() {
     chassis.setPose(0, 0, 0);
-    //releaseIntake();
+    releaseIntake();
     chassis.moveToPoint(-15, -15, 1000, false, 100);
     pros::delay(500);
     chassis.turnTo(-17, 15, 1000);
+    chassis.moveToPoint(-9, -12, 1000);
     pros::delay(500);
+    chassis.turnTo(-26.25, 15, 1000);
     backwings(true);
-    chassis.turnTo(-24, 15, 1000);
-    autoCata(10000, 2000);
+    startouttake();
+    autoCata(12000, 33000);
     backwings(false);
     chassis.turnTo(0, -10, 1000);
+    stopouttake();
     pros::delay(100);
     chassis.moveToPoint(-40, -20, 1000, false, 100);
     chassis.moveToPoint(-4, 8, 1000, true, 100);
@@ -22,20 +25,20 @@ void new_skills() {
     pros::delay(500);
 
     chassis.moveToPoint(-5, 90, 2500);
-    pros::delay(1000);
-    
-    leftwings(true);
-    chassis.moveToPoint(-10, 105, 1500);
-    chassis.moveToPoint(-17, 120, 1500);
-    leftwings(false);
-    startouttake();   
-    chassis.turnTo(-35, 122, 1500);
-    chassis.moveToPoint(-45, 122, 1000);
-    chassis.moveToPoint(-17, 122, 1000, false);
-    chassis.moveToPoint(-45, 122, 1000);
-    chassis.moveToPoint(-27, 105, 1000, false);
     pros::delay(500);
-    stopouttake();  
+    chassis.turnTo(-6, 70, 1000);
+    
+    chassis.moveToPoint(-10, 105, 1500, false);
+    chassis.moveToPoint(-17, 120, 1500, false);
+    startouttake();   
+    chassis.turnTo(35, 122, 1500, false);
+    chassis.moveToPoint(-45, 126, 1000, false);
+    chassis.moveToPoint(-17, 126, 1000);
+    chassis.moveToPoint(-45, 126, 1000, false);
+    chassis.moveToPoint(-17, 126, 1000);
+    chassis.moveToPoint(-45, 126, 1000, false);
+    chassis.moveToPoint(-17, 122, 1000);
+    pros::delay(500);
 
     /*chassis.moveToPoint(-10, 115, 1500);
     chassis.moveToPoint(-25, 125, 1500, false);
@@ -44,7 +47,7 @@ void new_skills() {
     chassis.moveToPoint(-20, 110, 1500, true);
 */
     chassis.turnTo(0, 130, 1500);
-    chassis.moveToPoint(-60, 70,2000, false);
+    chassis.moveToPoint(-61, 70,2000, false);
     chassis.turnTo(0, 0, 2000, false);
     pros::delay(500);
 
@@ -65,6 +68,17 @@ void new_skills() {
     chassis.moveToPoint(-90, 110, 1000);
     chassis.moveToPoint(-90, 80, 1000, false);
     bothfrontwings(false);
+    
+    chassis.turnTo(-105, 70, 1000);
+    chassis.moveToPoint(-105, 70, 1000);
+    chassis.turnTo(-105, 110, 1000);
+    rightwings(true);
+    chassis.moveToPoint(-105, 80, 1000, false);
+    chassis.moveToPoint(-105, 110, 1000);
+    chassis.moveToPoint(-105, 110, 1000);
+    chassis.moveToPoint(-105, 80, 1000, false);
+    rightwings(false);
+    stopouttake();
     
     
 
