@@ -24,5 +24,6 @@ Motor cata(3, MOTOR_GEARSET_36, false, MOTOR_ENCODER_DEGREES);
 ADIDigitalOut bwings('A');
 ADIDigitalOut leftwing('C');
 ADIDigitalOut rightwing('B');
-ADIDigitalOut elev('D');
+ADIDigitalOut hang1('D');
+ADIDigitalOut hang2('E');
 //pros::ADIDigitalIn limitSwitch('C');

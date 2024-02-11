@@ -59,14 +59,15 @@ void elims_offensive() {
     chassis.setPose(0,0,0);
     cata.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     releaseIntake();
+    pros::delay(50);
     rightwings(true);
     pros::delay(200);
     rightwings(false);
 
     chassis.moveToPoint(0, 71.5, 3000);
-    pros::delay(500);
+    pros::delay(600);
     intakes();
-    pros::delay(300);
+    pros::delay(700);
     bothfrontwings(true);
     chassis.moveToPoint(7, 2, 1000, false);
     bothfrontwings(false);
@@ -74,9 +75,9 @@ void elims_offensive() {
     chassis.turnTo(17, 21, 1000);
     pros::delay(100);
     outtake();
-    pros::delay(50);
+    pros::delay(250);
     chassis.moveToPoint(-5, 6, 1000);
-    chassis.moveToPoint(-40.5, 25.5, 2500);
+    chassis.moveToPoint(-42, 27, 2500);
     pros::delay(400);
     intakes();
 
@@ -85,12 +86,12 @@ void elims_offensive() {
     chassis.moveToPoint(20, 10, 1000, false);
     chassis.moveToPoint(31, 14, 1000, false);
     backwings(false);
-    pros::delay(500);
+    pros::delay(750);
 
     chassis.setPose(0,0,0);
-    chassis.moveToPoint(-5, -20, 1000, false);
+    chassis.moveToPoint(-3, -25, 1000, false);
     chassis.moveToPoint(0, 18, 1000);
-    chassis.turnTo(-5, -25, 500);
+    chassis.turnTo(-3, -27, 500);
     pros::delay(150);
     outtake();
     pros::delay(50);
@@ -176,9 +177,26 @@ void defensive_awp() {
     chassis.turnTo(-10, 10, 1000);
     chassis.moveToPoint(-16, 16.5, 1000);
     backwings(false);
-    chassis.moveToPoint(-29, 30, 1000);
+    chassis.moveToPoint(-26.5, 27.5, 1000);
 }
 
+void near_elims(){
+    chassis.setPose(0,0,0);
+    bothfrontwings(true);
+    pros::delay(500);
+    bothfrontwings(false);
+    chassis.moveToPoint(25, 25, 1000, true);
+    backwings(true);
+    chassis.turnTo(-25, 25, 1000);
+    chassis.moveToPoint(50, 25, 1000, false);
+    chassis.moveToPoint(25, 25, 1000, true);
+    chassis.moveToPoint(50, 25, 1000, false);
+    backwings(false);
+    chassis.moveToPoint(25, 25, 1000, true);
+    chassis.turnTo(0, 0, 1000);
+    chassis.moveToPoint(0, 0, 1000, true);
+    chassis.moveToPoint(-25, -25, 1000, false);
+}
 
 
 void simple_d_awp() {

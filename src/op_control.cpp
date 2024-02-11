@@ -164,8 +164,9 @@ void move_back_wings() {
 }
 
 void move_elevation() {
-    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) {
-        elev.set_value(!elevpos);
+    if (master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT)) {
+        hang1.set_value(!elevpos);
+        hang2.set_value(!elevpos);
         elevpos = !elevpos;
         pros::delay(350);
     }

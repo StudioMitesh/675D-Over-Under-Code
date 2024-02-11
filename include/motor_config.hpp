@@ -22,7 +22,8 @@ extern pros::Motor cata;
 extern pros::ADIDigitalOut moveintake;
 extern pros::ADIDigitalOut bwings;
 extern pros::ADIDigitalOut fwings;
-extern pros::ADIDigitalOut elev;
+extern pros::ADIDigitalOut hang1;
+extern pros::ADIDigitalOut hang2;
 extern pros::ADIDigitalOut leftwing;
 extern pros::ADIDigitalOut rightwing;
 

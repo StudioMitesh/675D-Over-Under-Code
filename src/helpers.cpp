@@ -47,6 +47,11 @@ void backwings(bool set) {
 //spins the cata to release the intake down
 void releaseIntake() {
     cata.move_relative(340, 100);
+    hang1.set_value(true);
+    hang2.set_value(true);
+    pros::delay(200);
+    hang1.set_value(false);
+    hang2.set_value(false);
 }
 
 //constant fire the cata for set time at set voltage
